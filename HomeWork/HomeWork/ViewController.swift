@@ -44,11 +44,22 @@ class ViewController: UIViewController {
     }
     
     
-    func hueta (var b: String = "123") {
+//    func hueta (var b: String = "123") {
+//        var l = 0
+//        for i in b {
+//            var o = i.wholeNumberValue ?? 0
+//            l = l + o
+//        }
+//        print(l)
+//    }
+    
+    func hueta (var b: Int = 123) {
         var l = 0
-        for i in b {
-            var o = i.wholeNumberValue ?? 0
+        var d: String = String(b)
+        for i in d {
+            var o: Int = i.wholeNumberValue ?? 0
             l = l + o
+            
         }
         print(l)
     }
@@ -109,7 +120,7 @@ class ViewController: UIViewController {
         division(a: 2, b: 2)
         multiply(a: 2.7, b: 2.9)
         multiply(a: 2, b: 2)
-        hueta(var: "234")
+        hueta(var: 666)
         print("В первом варианте неправильно поняла задание")
         comparison(text: "adf", text2: "fhfттт")
         print("Исправила вроде")
