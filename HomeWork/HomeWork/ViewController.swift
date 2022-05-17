@@ -105,6 +105,8 @@ class ViewController: UIViewController {
         print(e)
     }
     
+    var xxxx: [(Int, String)] = [(1, "x"), (4,"y"), (6,"a"), (-3,"b")]
+    
     
     
     
@@ -128,6 +130,12 @@ class ViewController: UIViewController {
         print("Есть много вопросов по этому типу сравнения")
         degree(num: 1)
         hueta2(var: 3)
+        
+        var x: [(Int, String)] = xxxx.map {($0.0 * $0.0, $0.1 )}.filter { $0.0 % 2 == 0}.sorted { $0.1 < $1.1}
+        print(x)
+        print(xxxx)
+        
+        
         
         
         
