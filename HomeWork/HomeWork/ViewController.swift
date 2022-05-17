@@ -132,6 +132,10 @@ class ViewController: UIViewController {
         hueta2(var: 3)
         
         var x: [(Int, String)] = xxxx.map {($0.0 * $0.0, $0.1 )}.filter { $0.0 % 2 == 0}.sorted { $0.1 < $1.1}
+        
+        // еще вариант возведения в степень
+        var xx = xxxx.map {(Int(pow(Double($0.0), 2)), $0.1 )}.filter { $0.0 % 2 == 0}.sorted { $0.1 < $1.1}
+        print(xx)
         print(x)
         print(xxxx)
         
