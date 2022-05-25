@@ -33,6 +33,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonForSum.layer.cornerRadius = 10
+        buttonForSum.layer.borderWidth = 9
+        buttonForSumLager.layer.cornerRadius = 10
+        buttonForSumLager.layer.borderWidth = 9
+        buttonForSumStout.layer.cornerRadius = 10
+        buttonForSumStout.layer.borderWidth = 9
+        newShift.layer.borderWidth = 9
+        newShift.layer.cornerRadius = 10
+       
     }
     
     @IBAction private func buttonAction(_ sender: Any) {

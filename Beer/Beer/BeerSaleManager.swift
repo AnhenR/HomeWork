@@ -35,7 +35,7 @@ class BeerSaleManager {
     
     func getVolume(_ name: String) -> Double {
         if let beer = beer.first(where: { $0.name == name }) {
-            return beer.volume
+            return round(beer.volume * 1000) / 1000
         }
         else {
             return 0
