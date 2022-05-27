@@ -6,148 +6,27 @@
 //
 
 import UIKit
-
+let game = UIView()
 class ViewController: UIViewController {
-    func sum (a: Double, b: Double) {
-        print(a + b)
+    func rundomColor() -> UIColor{
+        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
     }
-    func sum (a: Int, b: Int) {
-        print(a + b)
-        
-    }
-    
-    func subtract (a: Double, b: Double) {
-        print(a - b)
-    }
-    
-    
-    func subtract (a: Int, b: Int) {
-        print(a - b)
-    }
-    
-    func division (a: Double, b: Double) {
-        print(a / b)
-    }
-    
-    
-    func division (a: Int, b: Int) {
-        print(a / b)
-    }
-    
-    func multiply (a: Double, b: Double) {
-        print(a * b)
-    }
-    
-    
-    func multiply (a: Int, b: Int) {
-        print(a * b)
-    }
-    
-    
-//    func hueta (var b: String = "123") {
-//        var l = 0
-//        for i in b {
-//            var o = i.wholeNumberValue ?? 0
-//            l = l + o
-//        }
-//        print(l)
-//    }
-    
-    func hueta (var b: Int = 123) {
-        var l = 0
-        var d: String = String(b)
-        for i in d {
-            var o: Int = i.wholeNumberValue ?? 0
-            l = l + o
-            
-        }
-        print(l)
-    }
-    
-    
-    func comparison(text: String = "asd", text2: String = "asdf") {
-        if text.count > text2.count {
-            print("Первый текст как-то больше")
-        }
-        else if text.count < text2.count {
-            print("Первый текст как-то меньше")
-        }
-        else if text.count == text2.count {
-            print("Они как-то равны")
-        }
-        
-    }
-    
-    func comp (text1: String = "", text2: String = "") {
-        if text1 > text2 {
-            print("больше")
-        }
-        if text2 > text1 {
-            print("меньше")
-        }
-        if text1 == text2 {
-            print("ghjkfkkfsfs")
-        }
-    }
-    
-    
-    func degree (num: Double, power: Double = 2) {
-        print(pow(num,power))
-    }
-    
-    
-    func hueta2 (var b: Int = 7) {
-        var e = 1
-        for i in 1...b {
-            e = e * i
-            
-        }
-        print(e)
-    }
-    
-    var xxxx: [(Int, String)] = [(1, "x"), (4,"y"), (6,"a"), (-3,"b")]
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        sum(a: 2.5, b: 2.7)
-        sum(a: 2, b: 4)
-        subtract(a: 2.4, b: 2.6)
-        subtract(a: 2, b: 2)
-        division(a: 2.8, b: 2.1)
-        division(a: 2, b: 2)
-        multiply(a: 2.7, b: 2.9)
-        multiply(a: 2, b: 2)
-        hueta(var: 666)
-        print("В первом варианте неправильно поняла задание")
-        comparison(text: "adf", text2: "fhfттт")
-        print("Исправила вроде")
-        comp(text1: "эюя", text2: "абв")
-        print("Есть много вопросов по этому типу сравнения")
-        degree(num: 1)
-        hueta2(var: 3)
-        
-        var x: [(Int, String)] = xxxx.map {($0.0 * $0.0, $0.1 )}.filter { $0.0 % 2 == 0}.sorted { $0.1 < $1.1}
-        
-        // еще вариант возведения в степень
-        var xx = xxxx.map {(Int(pow(Double($0.0), 2)), $0.1 )}.filter { $0.0 % 2 == 0}.sorted { $0.1 < $1.1}
-        print(xx)
-        print(x)
-        print(xxxx)
-        
-        
-        
-        
-        
-        
-        
-    }
-    
-    
+        game.backgroundColor = .red
+        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        game.frame.size = .init(width: 100, height: 100)
+        game.center = .init(x: view.frame.midX, y: view.frame.midY)
+        game.layer.cornerRadius = game.frame.height/2
+        view.addSubview(game)
+        game.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
 }
+    @objc func didTap(){
+        game.frame.origin = .init(x: .random(in: 0...view.frame.maxX - game.frame.width), y: .random(in: 0...view.frame.maxY - game.frame.height))
+        game.backgroundColor = rundomColor()
+    }
 
 
+}
