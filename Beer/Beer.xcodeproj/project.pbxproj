@@ -13,8 +13,8 @@
 		CECAE48D2837DDF500FD5C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECAE48B2837DDF500FD5C19 /* Main.storyboard */; };
 		CECAE48F2837DDF700FD5C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECAE48E2837DDF700FD5C19 /* Assets.xcassets */; };
 		CECAE4922837DDF700FD5C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECAE4902837DDF700FD5C19 /* LaunchScreen.storyboard */; };
-		CECAE49C2837DE3D00FD5C19 /* classBeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAE49B2837DE3D00FD5C19 /* classBeer.swift */; };
-		CECAE49E2837E0ED00FD5C19 /* SaleBeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAE49D2837E0ED00FD5C19 /* SaleBeer.swift */; };
+		CECAE49C2837DE3D00FD5C19 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAE49B2837DE3D00FD5C19 /* Beer.swift */; };
+		CECAE49E2837E0ED00FD5C19 /* BeerSaleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAE49D2837E0ED00FD5C19 /* BeerSaleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		CECAE48E2837DDF700FD5C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECAE4912837DDF700FD5C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CECAE4932837DDF700FD5C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CECAE49B2837DE3D00FD5C19 /* classBeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classBeer.swift; sourceTree = "<group>"; };
-		CECAE49D2837E0ED00FD5C19 /* SaleBeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleBeer.swift; sourceTree = "<group>"; };
+		CECAE49B2837DE3D00FD5C19 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		CECAE49D2837E0ED00FD5C19 /* BeerSaleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSaleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +67,8 @@
 				CECAE48E2837DDF700FD5C19 /* Assets.xcassets */,
 				CECAE4902837DDF700FD5C19 /* LaunchScreen.storyboard */,
 				CECAE4932837DDF700FD5C19 /* Info.plist */,
-				CECAE49B2837DE3D00FD5C19 /* classBeer.swift */,
-				CECAE49D2837E0ED00FD5C19 /* SaleBeer.swift */,
+				CECAE49B2837DE3D00FD5C19 /* Beer.swift */,
+				CECAE49D2837E0ED00FD5C19 /* BeerSaleManager.swift */,
 			);
 			path = Beer;
 			sourceTree = "<group>";
@@ -146,8 +146,8 @@
 			files = (
 				CECAE48A2837DDF500FD5C19 /* ViewController.swift in Sources */,
 				CECAE4862837DDF500FD5C19 /* AppDelegate.swift in Sources */,
-				CECAE49C2837DE3D00FD5C19 /* classBeer.swift in Sources */,
-				CECAE49E2837E0ED00FD5C19 /* SaleBeer.swift in Sources */,
+				CECAE49C2837DE3D00FD5C19 /* Beer.swift in Sources */,
+				CECAE49E2837E0ED00FD5C19 /* BeerSaleManager.swift in Sources */,
 				CECAE4882837DDF500FD5C19 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
