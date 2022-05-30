@@ -17,6 +17,7 @@ enum DirectionOfTravel {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var lableDirection: UILabel!
     @IBOutlet weak var buttonTop: UIButton!
     @IBOutlet weak var buttonBottom: UIButton!
     @IBOutlet weak var buttonRight: UIButton!
@@ -58,20 +59,36 @@ class ViewController: UIViewController {
     func choiceOfDirection(direction: DirectionOfTravel){
         switch direction {
         case .top:
-            if myCircle.frame.origin.y > 0 {
+            if myCircle.frame.origin.y > 0 + 8 {
                 myCircle.frame.origin.y -= 10
+                lableDirection.text = "Верх"
+            }
+            else {
+                lableDirection.text = "Нет"
             }
         case .bottom:
             if myCircle.frame.origin.y < buttonTop.frame.origin.y - 50 {
                 myCircle.frame.origin.y += 10
+                lableDirection.text = "Низ"
+            }
+            else {
+                lableDirection.text = "Нет"
             }
         case .right:
-            if myCircle.frame.origin.x < view.frame.maxX - myCircle.frame.width{
+            if myCircle.frame.origin.x < view.frame.maxX - myCircle.frame.width - 7 {
                 myCircle.frame.origin.x += 10
+                lableDirection.text = "Право"
+            }
+            else {
+                lableDirection.text = "Нет"
             }
         case .left:
-            if myCircle.frame.origin.x > 0 {
+            if myCircle.frame.origin.x > 0 + 7 {
                 myCircle.frame.origin.x -= 10
+                lableDirection.text = "Лево"
+            }
+            else {
+                lableDirection.text = "Нет"
             }
         }
     }

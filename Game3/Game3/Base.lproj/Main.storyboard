@@ -68,6 +68,13 @@
                                     <action selector="buttonLeftTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uqP-bR-U0k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Состояние" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVo-eF-RG3">
+                                <rect key="frame" x="166" y="670" width="86" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -89,6 +96,7 @@
                         <outlet property="buttonLeft" destination="G1a-f3-eil" id="4JJ-45-Smb"/>
                         <outlet property="buttonRight" destination="7hC-FI-eUC" id="E1V-aZ-c99"/>
                         <outlet property="buttonTop" destination="OMe-83-5aX" id="rId-7T-t4x"/>
+                        <outlet property="lableDirection" destination="TVo-eF-RG3" id="dcp-Zy-ePs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
