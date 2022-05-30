@@ -6,15 +6,17 @@
 //
 
 import UIKit
+
 class ViewController: UIViewController {
-    let tapView = UIView()
-    func randomColor() -> UIColor{
-        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
-    }
+    
+    private  let tapView = UIView()
+    private let colorArray:[UIColor] = [.red , .blue , .magenta , .cyan , .yellow , .gray]
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tapView.backgroundColor = .red
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tapView.frame.size = .init(width: 30, height: 30)
@@ -22,27 +24,37 @@ class ViewController: UIViewController {
         view.addSubview(tapView)
         tapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
+    
     @objc func didTap(){
-//        for x in 0...Int(view.frame.maxX/10) {
-//            for y in 0...Int(view.frame.maxY/10) {
-//                var sq = UIView()
-//                sq.frame.size = .init(width: 10, height: 10)
-//                sq.frame.origin = .init(x: x * 10, y: y * 10)
-//                sq.backgroundColor = randomColor()
-//                view.addSubview(sq)
-//            }
-//        }
-        
-        for x in 0...Int((view.frame.maxY * view.frame.maxX)/10) {
-            var sq1 = UIView()
-            sq1.backgroundColor = randomColor()
-            sq1.frame.size = .init(width: 10, height: 10)
-            sq1.frame.origin = .init(x: Int((x / Int(view.frame.maxX))*10) , y: Int((x % Int(view.frame.maxX))*10))
-            view.addSubview(sq1)
+        for x in 0...Int((view.frame.maxY * view.frame.maxX)/100){
+            let square = UILabel()
+            square.backgroundColor = colorArray.randomElement()
+            if square.backgroundColor == .gray {
+                square.text = "gray"
+            }
+            else if square.backgroundColor == .red {
+                square.text = "red"
+            }
+            else if square.backgroundColor == .yellow {
+                square.text = "yellow"
+            }
+            else if square.backgroundColor == .cyan {
+                square.text = "cyan"
+            }
+            else if square.backgroundColor == .magenta {
+                square.text = "magenta"
+            }
+            else if square.backgroundColor == .blue {
+                square.text = "blue"
+            }
+            square.frame.size = .init(width: 100, height: 100)
+            if Int((x / Int(view.frame.maxX))*100) < Int(view.frame.maxX){
+                square.frame.origin = .init(x: Int((x / Int(view.frame.maxX))*100) , y: Int((x % Int(view.frame.maxX))*100))
+                view.addSubview(square)
+            }
         }
     }
 }
-
 
 
 
