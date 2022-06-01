@@ -7,12 +7,18 @@
 
 import UIKit
 enum Colors: CaseIterable {
+    case red
+    case blue
+    case magenta
+    case cyan
+    case yellow
+    case gray
     var name: String {
         switch self {
         case .red:
             return "red"
         case .blue:
-              return "blue"
+            return "blue"
         case .magenta:
             return "magenta"
         case .cyan:
@@ -39,18 +45,12 @@ enum Colors: CaseIterable {
             return.gray
         }
     }
-    case red
-    case blue
-    case magenta
-    case cyan
-    case yellow
-    case gray
 }
 
 class ViewController: UIViewController {
     
     private  let tapView = UIView()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tapView.backgroundColor = .red
@@ -65,7 +65,6 @@ class ViewController: UIViewController {
     }
     
     @objc func didTap(){
-        
         for x in 0...Int((view.frame.maxY * view.frame.maxX)/100){
             var square = UILabel()
             var color = Colors.allCases.randomElement()
