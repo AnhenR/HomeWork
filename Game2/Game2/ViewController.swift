@@ -7,6 +7,38 @@
 
 import UIKit
 enum Colors: CaseIterable {
+    var name: String {
+        switch self {
+        case .red:
+            return "red"
+        case .blue:
+              return "blue"
+        case .magenta:
+            return "magenta"
+        case .cyan:
+            return "cyan"
+        case .yellow:
+            return "yellow"
+        case .gray:
+            return "gray"
+        }
+    }
+    var color1: UIColor {
+        switch self {
+        case .red:
+            return.red
+        case .blue:
+            return.blue
+        case .magenta:
+            return.magenta
+        case .cyan:
+            return.cyan
+        case .yellow:
+            return.yellow
+        case .gray:
+            return.gray
+        }
+    }
     case red
     case blue
     case magenta
@@ -18,7 +50,6 @@ enum Colors: CaseIterable {
 class ViewController: UIViewController {
     
     private  let tapView = UIView()
-//    private let colorArray:[UIColor] = [.red , .blue , .magenta , .cyan , .yellow , .gray]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,29 +69,8 @@ class ViewController: UIViewController {
         for x in 0...Int((view.frame.maxY * view.frame.maxX)/100){
             var square = UILabel()
             var color = Colors.allCases.randomElement()
-                            switch color {
-                            case .blue:
-                                square.backgroundColor = .blue
-                                square.text = "blue"
-                            case .red:
-                                square.backgroundColor = .red
-                                square.text = "red"
-                            case .magenta:
-                                square.backgroundColor = .magenta
-                                square.text = "magenta"
-                            case .cyan:
-                                square.backgroundColor = .cyan
-                                square.text = "cyan"
-                            case .yellow:
-                                square.backgroundColor = .yellow
-                                square.text = "yellow"
-                            case .gray:
-                                square.backgroundColor = .gray
-                                square.text = "gray"
-                            case .none:
-                                square.text = "No"
-                            }
-//            square.backgroundColor = color
+            square.text = color?.name
+            square.backgroundColor = color?.color1
             square.textAlignment = .center
             square.textColor = .black
             square.frame.size = .init(width: 100, height: 100)
@@ -71,24 +81,7 @@ class ViewController: UIViewController {
         }
     }
 }
-//if square.backgroundColor == .gray {
-//    square.text = "gray"
-//}
-//else if square.backgroundColor == .red {
-//    square.text = "red"
-//}
-//else if square.backgroundColor == .yellow {
-//    square.text = "yellow"
-//}
-//else if square.backgroundColor == .cyan {
-//    square.text = "cyan"
-//}
-//else if square.backgroundColor == .magenta {
-//    square.text = "magenta"
-//}
-//else if square.backgroundColor == .blue {
-//    square.text = "blue"
-//}
+
 
 
 
