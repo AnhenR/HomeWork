@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE606B6F284D1A2800EAA707 /* GameCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE606B6E284D1A2800EAA707 /* GameCatViewController.swift */; };
+		CE606B71284D1A3F00EAA707 /* GameCatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE606B70284D1A3F00EAA707 /* GameCatStoryboard.storyboard */; };
 		CEF57FEF2840E26F003ABDC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF57FEE2840E26F003ABDC4 /* AppDelegate.swift */; };
 		CEF57FF12840E26F003ABDC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF57FF02840E26F003ABDC4 /* SceneDelegate.swift */; };
 		CEF57FF32840E26F003ABDC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF57FF22840E26F003ABDC4 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE606B6E284D1A2800EAA707 /* GameCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCatViewController.swift; sourceTree = "<group>"; };
+		CE606B70284D1A3F00EAA707 /* GameCatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameCatStoryboard.storyboard; sourceTree = "<group>"; };
 		CEF57FEB2840E26F003ABDC4 /* Game for cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game for cats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF57FEE2840E26F003ABDC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF57FF02840E26F003ABDC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				CEF57FF72840E270003ABDC4 /* Assets.xcassets */,
 				CEF57FF92840E270003ABDC4 /* LaunchScreen.storyboard */,
 				CEF57FFC2840E270003ABDC4 /* Info.plist */,
+				CE606B6E284D1A2800EAA707 /* GameCatViewController.swift */,
+				CE606B70284D1A3F00EAA707 /* GameCatStoryboard.storyboard */,
 			);
 			path = "Game for cats";
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				CEF57FFB2840E270003ABDC4 /* LaunchScreen.storyboard in Resources */,
 				CEF57FF82840E270003ABDC4 /* Assets.xcassets in Resources */,
+				CE606B71284D1A3F00EAA707 /* GameCatStoryboard.storyboard in Resources */,
 				CEF57FF62840E26F003ABDC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +148,7 @@
 				CEF57FF32840E26F003ABDC4 /* ViewController.swift in Sources */,
 				CEF57FEF2840E26F003ABDC4 /* AppDelegate.swift in Sources */,
 				CEF57FF12840E26F003ABDC4 /* SceneDelegate.swift in Sources */,
+				CE606B6F284D1A2800EAA707 /* GameCatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

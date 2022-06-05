@@ -6,31 +6,24 @@
 //
 
 import UIKit
-let game = UIView()
 class ViewController: UIViewController {
-    func randomColor() -> UIColor{
-        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
-    }
+   
+    @IBOutlet weak var catLable: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        game.backgroundColor = .red
+        startButton.layer.cornerRadius = 20
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        game.frame.size = .init(width: 100, height: 100)
-        game.center = .init(x: view.frame.midX, y: view.frame.midY)
-        game.layer.cornerRadius = game.frame.height/2
-        view.addSubview(game)
-        game.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
+    
+    @IBAction func startButtonAction(_ sender: Any) {
+        tapGameCat()
     }
-    @objc func didTap(){
-        game.frame.origin = .init(x: .random(in: 0...view.frame.maxX - game.frame.width), y: .random(in: 0...view.frame.maxY - game.frame.height))
-        game.backgroundColor = randomColor()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("1\(game.frame.origin)")
-        print("2 \(game.bounds.origin)")
+    
+    private func tapGameCat(){
+        let storyboard = UIStoryboard(name: "GameCatStoryboard", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "GameCat")
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 }
-
