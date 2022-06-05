@@ -13,6 +13,8 @@
 		CE2534CD28436BE600115345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2534CB28436BE600115345 /* Main.storyboard */; };
 		CE2534CF28436BE700115345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2534CE28436BE700115345 /* Assets.xcassets */; };
 		CE2534D228436BE700115345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2534D028436BE700115345 /* LaunchScreen.storyboard */; };
+		CE606B75284D1DEB00EAA707 /* GameSquaresStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE606B74284D1DEB00EAA707 /* GameSquaresStoryboard.storyboard */; };
+		CE606B77284D1E1200EAA707 /* GameSquaresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE606B76284D1E1200EAA707 /* GameSquaresViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CE2534CE28436BE700115345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE2534D128436BE700115345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE2534D328436BE700115345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE606B74284D1DEB00EAA707 /* GameSquaresStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameSquaresStoryboard.storyboard; sourceTree = "<group>"; };
+		CE606B76284D1E1200EAA707 /* GameSquaresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSquaresViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				CE2534CE28436BE700115345 /* Assets.xcassets */,
 				CE2534D028436BE700115345 /* LaunchScreen.storyboard */,
 				CE2534D328436BE700115345 /* Info.plist */,
+				CE606B76284D1E1200EAA707 /* GameSquaresViewController.swift */,
+				CE606B74284D1DEB00EAA707 /* GameSquaresStoryboard.storyboard */,
 			);
 			path = Game2;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE606B75284D1DEB00EAA707 /* GameSquaresStoryboard.storyboard in Resources */,
 				CE2534D228436BE700115345 /* LaunchScreen.storyboard in Resources */,
 				CE2534CF28436BE700115345 /* Assets.xcassets in Resources */,
 				CE2534CD28436BE600115345 /* Main.storyboard in Resources */,
@@ -141,6 +148,7 @@
 				CE2534CA28436BE600115345 /* ViewController.swift in Sources */,
 				CE2534C628436BE600115345 /* AppDelegate.swift in Sources */,
 				CE2534C828436BE600115345 /* SceneDelegate.swift in Sources */,
+				CE606B77284D1E1200EAA707 /* GameSquaresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
