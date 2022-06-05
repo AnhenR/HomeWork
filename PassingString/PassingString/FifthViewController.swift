@@ -13,7 +13,7 @@ class FifthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lable.text = Weather.weather.weatherOptions()
+        lable.text = "\(ViewController().string1) \(Weather.weather.weatherOptions())"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

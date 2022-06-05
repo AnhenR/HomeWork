@@ -7,8 +7,9 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
-    
+    var string1 = "hahaha"
     @IBOutlet weak var firstButton: UIButton!
     
     override func viewDidLoad() {

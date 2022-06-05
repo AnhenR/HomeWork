@@ -13,6 +13,7 @@ class FourthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewController().string1
         Weather.weather.weatherOptions()
         fourthButton.setTitle("I warned", for: .normal)
         fourthButton.backgroundColor = .black

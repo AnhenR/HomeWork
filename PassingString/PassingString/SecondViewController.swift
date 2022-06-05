@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 
 class SecondViewController: UIViewController {
+    
     lazy var secondButton = makeButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewController().string1
         Weather.weather.weatherOptions()
         secondButton.setTitle("Sure?", for: .normal)
         secondButton.backgroundColor = .black
