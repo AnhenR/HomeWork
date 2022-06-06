@@ -8,27 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-lazy var lableForNames = makeLable()
+    var myName = Names()
+    @IBOutlet weak var tapButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        tapButton.layer.cornerRadius = 20
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        lableForNames.text = "Name variations \(Names().firstName) or \(Names().secondName), or \(Names().thirdName)"
-        view.addSubview(lableForNames)
-        NSLayoutConstraint.activate([
-            lableForNames.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300),
-            lableForNames.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            lableForNames.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20),
-            lableForNames.heightAnchor.constraint(equalToConstant: 30)
-        ])
+    
+    @IBAction func tapButtonAction(_ sender: Any) {
+        navigation()
     }
-    private func makeLable() -> UILabel {
-        let mylable = UILabel()
-        mylable.translatesAutoresizingMaskIntoConstraints = false
-        return mylable
-}
+    private func navigation(){
+        let storyboard = UIStoryboard(name: "ScreenToShowStoryboard", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ScreenToShowViewController") as! ScreenToShowViewController
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.setName1 = myName.firstName
+        viewController.setName2 = myName.secondName
+        viewController.setName3 = myName.thirdName
+        present(viewController, animated: true)
+    }
 }
 
