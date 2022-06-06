@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var myName = Names()
+    var myNames = Names2(name1: "Niko", name2: "Den", name3: "Pop")
     @IBOutlet weak var tapButton: UIButton!
 
     override func viewDidLoad() {
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         viewController.setName1 = myName.firstName
         viewController.setName2 = myName.secondName
         viewController.setName3 = myName.thirdName
+        viewController.setNames = myNames
         present(viewController, animated: true)
     }
 }
