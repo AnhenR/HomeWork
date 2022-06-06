@@ -8,13 +8,6 @@
 import Foundation
 import UIKit
 
-//class Navigation: UIViewController {
-//    static var navigation = Navigation()
-//        let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController")
-//        viewController.modalPresentationStyle = .fullScreen
-//        present(viewController, animated: true)
-//}
 class Weather {
     static let weather = Weather()
     init(){}

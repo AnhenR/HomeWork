@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class FourthViewController: UIViewController {
+    var fourthLaughString = ""
     lazy var fourthButton = makeButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewController().string1
-        Weather.weather.weatherOptions()
         fourthButton.setTitle("I warned", for: .normal)
         fourthButton.backgroundColor = .black
         fourthButton.layer.cornerRadius = 20
@@ -32,8 +31,9 @@ class FourthViewController: UIViewController {
     }
     @objc func didTapFourthButton(){
         let storyboard = UIStoryboard(name: "FifthStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FifthViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FifthViewController") as! FifthViewController
         viewController.modalPresentationStyle = .fullScreen
+        viewController.fifthLaughString = fourthLaughString
         present(viewController, animated: true)
     }
     private func makeButton() -> UIButton {

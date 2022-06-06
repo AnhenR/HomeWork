@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class FifthViewController: UIViewController {
+    var fifthLaughString = ""
     lazy var lable = makeLable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lable.text = "\(ViewController().string1) \(Weather.weather.weatherOptions())"
+        lable.text = "\(fifthLaughString) \(Weather.weather.weatherOptions())"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

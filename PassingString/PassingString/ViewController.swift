@@ -7,14 +7,13 @@
 
 import UIKit
 
-
 class ViewController: UIViewController {
-    var string1 = "hahaha"
+    var laughString = "HaHaHa"
+    
     @IBOutlet weak var firstButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Weather.weather.weatherOptions()
         firstButton.layer.cornerRadius = 20
         firstButton.setTitle("Weather forecast", for: .normal)
     }
@@ -25,8 +24,9 @@ class ViewController: UIViewController {
     
     private func navigation(){
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         viewController.modalPresentationStyle = .fullScreen
+        viewController.secondLaughString = laughString
         present(viewController, animated: true)
     }
     

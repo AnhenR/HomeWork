@@ -9,13 +9,11 @@ import Foundation
 import UIKit
 
 class SecondViewController: UIViewController {
-    
+    var secondLaughString = ""
     lazy var secondButton = makeButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewController().string1
-        Weather.weather.weatherOptions()
         secondButton.setTitle("Sure?", for: .normal)
         secondButton.backgroundColor = .black
         secondButton.layer.cornerRadius = 20
@@ -33,8 +31,9 @@ class SecondViewController: UIViewController {
     }
     @objc func didTapSecondButton(){
         let storyboard = UIStoryboard(name: "ThirdStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
         viewController.modalPresentationStyle = .fullScreen
+        viewController.thirdLaughString = secondLaughString
         present(viewController, animated: true)
     }
     private func makeButton() -> UIButton {
