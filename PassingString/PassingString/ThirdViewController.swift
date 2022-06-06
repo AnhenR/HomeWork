@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 class ThirdViewController: UIViewController {
-    var thirdLaughString = ""
     lazy var thirdButton = makeButton()
+    var thirdLaughString = ""
+    func setString(newString: String){
+        thirdLaughString = newString
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,7 @@ class ThirdViewController: UIViewController {
         let storyboard = UIStoryboard(name: "FourthStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FourthViewController") as! FourthViewController
         viewController.modalPresentationStyle = .fullScreen
-        viewController.fourthLaughString = thirdLaughString
+        viewController.setString(newString: thirdLaughString)
         present(viewController, animated: true)
     }
     private func makeButton() -> UIButton {

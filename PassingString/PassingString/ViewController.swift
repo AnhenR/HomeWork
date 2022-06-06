@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var laughString = "HaHaHa"
+    
+    var laughString = "HaHaHa" 
     
     @IBOutlet weak var firstButton: UIButton!
     
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         viewController.modalPresentationStyle = .fullScreen
-        viewController.secondLaughString = laughString
+        viewController.setString(newString: laughString)
         present(viewController, animated: true)
     }
     

@@ -9,9 +9,12 @@ import Foundation
 import UIKit
 
 class FifthViewController: UIViewController {
-    var fifthLaughString = ""
     lazy var lable = makeLable()
-    
+    var fifthLaughString = ""
+    func setString(newString: String){
+        fifthLaughString = newString
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         lable.text = "\(fifthLaughString) \(Weather.weather.weatherOptions())"
