@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         viewController.setName2 = myName.secondName
         viewController.setName3 = myName.thirdName
         viewController.setNames = myNames
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
