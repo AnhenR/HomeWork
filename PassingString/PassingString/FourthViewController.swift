@@ -37,7 +37,7 @@ class FourthViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "FifthViewController") as! FifthViewController
         viewController.modalPresentationStyle = .fullScreen
         viewController.setString(newString: fourthLaughString)
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     private func makeButton() -> UIButton {
         let myButton = UIButton()

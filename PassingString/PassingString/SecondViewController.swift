@@ -38,7 +38,7 @@ class SecondViewController: UIViewController {
         viewController.setString(newString: secondLaughString)
         viewController.modalPresentationStyle = .fullScreen
         viewController.setString(newString: secondLaughString)
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     private func makeButton() -> UIButton {
         let myButton = UIButton()

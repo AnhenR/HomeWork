@@ -37,7 +37,7 @@ class ThirdViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "FourthViewController") as! FourthViewController
         viewController.modalPresentationStyle = .fullScreen
         viewController.setString(newString: thirdLaughString)
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     private func makeButton() -> UIButton {
         let myButton = UIButton()

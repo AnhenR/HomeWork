@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         viewController.modalPresentationStyle = .fullScreen
         viewController.setString(newString: laughString)
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
