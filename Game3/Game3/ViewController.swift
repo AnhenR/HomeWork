@@ -38,6 +38,23 @@ class ViewController: UIViewController {
         myCircle.center = .init(x: view.frame.midX, y: view.frame.midY)
         myCircle.layer.cornerRadius = myCircle.frame.height/2
         view.addSubview(myCircle)
+        myCircle.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(didSwipe)))
+//        view.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(didSwipe)))
+    }
+    @objc func didSwipe(sender: UISwipeGestureRecognizer){
+        var circle = myCircle
+        UIView.animate(withDuration: 1.0){
+            if sender.direction == .right {
+                circle.frame = CGRect(x: circle.frame.origin.x + circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+            }
+            else if sender.direction == .left {
+                circle.frame = CGRect(x: circle.frame.origin.x - circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+            }
+            else if sender.direction == .up {
+                circle.frame = CGRect(x: circle.frame.origin.x, y: circle.frame.origin.y - circle.frame.size.height, width: circle.frame.size.width, height: circle.frame.size.height)
+            }
+        }
+        print("Direction:\(sender.direction)")
     }
     
     @IBAction func buttonTopTap(_ sender: Any) {
