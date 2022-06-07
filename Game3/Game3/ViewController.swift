@@ -38,20 +38,41 @@ class ViewController: UIViewController {
         myCircle.center = .init(x: view.frame.midX, y: view.frame.midY)
         myCircle.layer.cornerRadius = myCircle.frame.height/2
         view.addSubview(myCircle)
-        myCircle.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(didSwipe)))
-//        view.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(didSwipe)))
+        let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe))
+        leftGesture.direction = .left
+        let rightGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe))
+        rightGesture.direction = .right
+        let upGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe))
+        upGesture.direction = .up
+        let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe))
+        downGesture.direction = .down
+        myCircle.addGestureRecognizer(leftGesture)
+        myCircle.addGestureRecognizer(rightGesture)
+        myCircle.addGestureRecognizer(upGesture)
+        myCircle.addGestureRecognizer(downGesture)
     }
     @objc func didSwipe(sender: UISwipeGestureRecognizer){
         var circle = myCircle
         UIView.animate(withDuration: 1.0){
             if sender.direction == .right {
-                circle.frame = CGRect(x: circle.frame.origin.x + circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+                if circle.frame.origin.x < self.view.frame.maxX - circle.frame.width - 10 {
+                    circle.frame = CGRect(x: circle.frame.origin.x + circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+                }
             }
             else if sender.direction == .left {
-                circle.frame = CGRect(x: circle.frame.origin.x - circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+                if circle.frame.origin.x > 0 + 7 {
+                    circle.frame = CGRect(x: circle.frame.origin.x - circle.frame.size.width, y: circle.frame.origin.y, width: circle.frame.size.width, height: circle.frame.size.height)
+                }
             }
             else if sender.direction == .up {
-                circle.frame = CGRect(x: circle.frame.origin.x, y: circle.frame.origin.y - circle.frame.size.height, width: circle.frame.size.width, height: circle.frame.size.height)
+                if circle.frame.origin.y > 0 + 8 {
+                    circle.frame = CGRect(x: circle.frame.origin.x, y: circle.frame.origin.y - circle.frame.size.height, width: circle.frame.size.width, height: circle.frame.size.height)
+                }
+            }
+            else if sender.direction == .down {
+                if circle.frame.origin.y < self.buttonTop.frame.origin.y - 50 {
+                    circle.frame = CGRect(x: circle.frame.origin.x, y: circle.frame.origin.y + circle.frame.size.height, width: circle.frame.size.width, height: circle.frame.size.height)
+                }
             }
         }
         print("Direction:\(sender.direction)")
