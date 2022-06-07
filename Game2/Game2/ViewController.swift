@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "GameSquaresStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GameSquaresViewController")
         viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
