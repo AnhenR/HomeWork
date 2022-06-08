@@ -36,7 +36,6 @@ class SecondViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ThirdStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ThirdViewController") as! ThirdViewController
         viewController.setString(newString: secondLaughString)
-        viewController.modalPresentationStyle = .fullScreen
         viewController.setString(newString: secondLaughString)
         navigationController?.pushViewController(viewController, animated: true)
     }
