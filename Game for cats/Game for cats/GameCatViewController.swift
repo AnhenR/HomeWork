@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
+private let game = UIView()
+
 class GameCat: UIViewController {
-    private let game = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         game.backgroundColor = .red
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         game.frame.size = .init(width: 100, height: 100)
@@ -22,6 +25,7 @@ class GameCat: UIViewController {
         view.addSubview(game)
         game.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
+    
     @objc func didTap(){
         game.frame.origin = .init(x: .random(in: 0...view.frame.maxX - game.frame.width), y: .random(in: 0...view.frame.maxY - game.frame.height))
         game.backgroundColor = UIColor.randomColor

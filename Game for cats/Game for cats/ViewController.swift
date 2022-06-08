@@ -29,13 +29,12 @@ class ViewController: UIViewController {
     private func tapGameCat(){
         let storyboard = UIStoryboard(name: "GameCatStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GameCat")
-        viewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
     private func tapBallGame(){
         let storyboard = UIStoryboard(name: "GameTapStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GameTap")
-        viewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
