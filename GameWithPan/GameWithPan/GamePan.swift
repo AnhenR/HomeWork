@@ -28,18 +28,6 @@ class GamePan: UIViewController {
     }
     @objc func handlePanGesture (panBall: UIPanGestureRecognizer){
         switch panBall.state {
-        case .began:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
-        case .possible:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
-        case .changed:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
-        case .ended:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
-        case .cancelled:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
-        case .failed:
-            ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
         @unknown default :
             ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
         }
