@@ -26,6 +26,7 @@ class GamePan: UIViewController {
         let panBall = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         ball.addGestureRecognizer(panBall)
     }
+    
     @objc func handlePanGesture (panBall: UIPanGestureRecognizer){
         switch panBall.state {
         @unknown default :
