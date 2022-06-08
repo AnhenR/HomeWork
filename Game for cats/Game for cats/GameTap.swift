@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 
 private let ball = UIView()
-//private let singleTapGestureRecognizerView = UITapGestureRecognizer()
-//private let singleTapGestureRecognizerBall = UITapGestureRecognizer()
-//private let doubleTapGestureRecognizerBall = UITapGestureRecognizer()
 
 class GameTap: UIViewController {
     
@@ -46,11 +43,11 @@ class GameTap: UIViewController {
         }
     }
     @objc func handleTapGestureBall(tapBall: UITapGestureRecognizer) {
-            if tapBall.numberOfTapsRequired == 2 {
-                ball.isHidden = true
-            }
-            else if tapBall.numberOfTapsRequired == 1 {
-                ball.backgroundColor = .red
-            }
+        if tapBall.numberOfTapsRequired == 2 {
+            ball.isHidden = true
+        }
+        else if tapBall.numberOfTapsRequired == 1 {
+            ball.backgroundColor = .red
+        }
     }
 }
