@@ -8,8 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var myName = Names()
-    var myNames = Names2(name1: "Niko", name2: "Den", name3: "Pop")
+   var myName = Names()
+   var myNames = Names2(name1: "Niko", name2: "Den", name3: "Pop")
+   
     @IBOutlet weak var tapButton: UIButton!
 
     override func viewDidLoad() {
