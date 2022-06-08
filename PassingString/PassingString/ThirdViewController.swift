@@ -10,10 +10,7 @@ import UIKit
 
 class ThirdViewController: UIViewController {
     lazy var thirdButton = makeButton()
-    var thirdLaughString = ""
-    func setString(newString: String){
-        thirdLaughString = newString
-    }
+    private var thirdLaughString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +35,16 @@ class ThirdViewController: UIViewController {
         viewController.setString(newString: thirdLaughString)
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
     private func makeButton() -> UIButton {
-        let myButton = UIButton()
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        return myButton
-    }
+            let myButton = UIButton()
+            myButton.translatesAutoresizingMaskIntoConstraints = false
+            return myButton
+        }
+    
+    func setString(newString: String){
+            thirdLaughString = newString
+        }
+    
+   
 }

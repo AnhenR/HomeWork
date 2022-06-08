@@ -10,10 +10,7 @@ import UIKit
 
 class SecondViewController: UIViewController {
     lazy var secondButton = makeButton()
-    var secondLaughString: String = ""
-    func setString(newString: String){
-        secondLaughString = newString
-    }
+    private var secondLaughString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,5 +40,9 @@ class SecondViewController: UIViewController {
         let myButton = UIButton()
         myButton.translatesAutoresizingMaskIntoConstraints = false
         return myButton
+    }
+    
+    func setString(newString: String){
+        secondLaughString = newString
     }
 }

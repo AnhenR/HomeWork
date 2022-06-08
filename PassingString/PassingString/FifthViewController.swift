@@ -10,15 +10,14 @@ import UIKit
 
 class FifthViewController: UIViewController {
     lazy var lable = makeLable()
-    var fifthLaughString = ""
-    func setString(newString: String){
-        fifthLaughString = newString
-    }
-
+    private var fifthLaughString = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lable.text = "\(fifthLaughString) \(Weather.weather.weatherOptions())"
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.addSubview(lable)
@@ -29,9 +28,14 @@ class FifthViewController: UIViewController {
             lable.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 30)
         ])
     }
+    
     private func makeLable() -> UILabel {
         let mylable = UILabel()
         mylable.translatesAutoresizingMaskIntoConstraints = false
         return mylable
+    }
+    
+    func setString(newString: String){
+        fifthLaughString = newString
     }
 }

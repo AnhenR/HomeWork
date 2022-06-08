@@ -10,10 +10,8 @@ import UIKit
 
 class FourthViewController: UIViewController {
     lazy var fourthButton = makeButton()
-    var fourthLaughString = ""
-    func setString(newString: String){
-        fourthLaughString = newString
-    }
+    private var fourthLaughString = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +19,7 @@ class FourthViewController: UIViewController {
         fourthButton.backgroundColor = .black
         fourthButton.layer.cornerRadius = 20
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.addSubview(fourthButton)
@@ -32,15 +31,21 @@ class FourthViewController: UIViewController {
         ])
         fourthButton.addTarget(self, action: #selector(didTapFourthButton), for: .touchUpInside)
     }
+    
     @objc func didTapFourthButton(){
         let storyboard = UIStoryboard(name: "FifthStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FifthViewController") as! FifthViewController
         viewController.setString(newString: fourthLaughString)
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
     private func makeButton() -> UIButton {
         let myButton = UIButton()
         myButton.translatesAutoresizingMaskIntoConstraints = false
         return myButton
+    }
+    
+    func setString(newString: String){
+        fourthLaughString = newString
     }
 }
