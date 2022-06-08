@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-private let ball = UIView()
+private var ball = UIView()
 
 class GamePan: UIViewController {
     
@@ -27,11 +27,6 @@ class GamePan: UIViewController {
         ball.addGestureRecognizer(panBall)
     }
     @objc func handlePanGesture (panBall: UIPanGestureRecognizer){
-        let topPadding = view.safeAreaInsets.top
-        let bottomPadding = view.safeAreaInsets.bottom
-        let leftPadding = view.safeAreaInsets.left
-        let rightPadding = view.safeAreaInsets.right
-        
         switch panBall.state {
         case .began:
             ball.frame = CGRect(x: panBall.location(in: view).x - ball.frame.size.height / 2, y: panBall.location(in: view).y - ball.frame.size.width / 2 , width: ball.frame.size.width, height:ball.frame.size.height)
