@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     private func tapGamePan(){
         let storyboard = UIStoryboard(name: "GamePanStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GamePan")
-        viewController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
