@@ -62,10 +62,12 @@ class ViewController: UIViewController {
         let myLable = UILabel()
         myLable.translatesAutoresizingMaskIntoConstraints = false
         myLable.textColor = .white
+        myLable.textAlignment = .right
+        myLable.font = UIFont(name: "Helvetica", size: 60)
         return myLable
     }
     
-    @objc func didTap(button: UIButton){
+    @objc func didTap(button: UIButton) {
         resultLabel.text = button.currentTitle ?? ""
     }
     
