@@ -14,12 +14,18 @@ class ViewController: UIViewController {
     private var operation: String = ""
     private var stillTiping = false
     private var inputInt: Double {
+        
         get {
             return Double(resultLable.text!)!
         }
         set {
-            resultLable.text = "\(newValue)"
+            let new = "\(newValue)"
+            if new.contains(".0"){
+                resultLable.text = "\(new.dropLast(2))"
+            } else{
+            resultLable.text = new
             stillTiping = false
+            }
         }
     }
     
@@ -48,25 +54,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionButtons(_ sender: UIButton) {
-        operation = (sender.titleLabel?.text)!
-        firstInput = inputInt
-        stillTiping = false
-        
         switch sender.titleLabel?.text {
         case "AC":
+            firstInput = 0
+            inputInt = 0
+            secondInput = 0
             resultLable.text = "0"
+            stillTiping = false
+            
         case ",":
-            if resultLable!.text?.contains(",") == true {
+            if (resultLable.text?.contains("."))! {
                 resultLable.text = resultLable.text
             }
-            else if resultLable!.text?.contains(",") == false {
-                resultLable.text = resultLable.text! + (sender.titleLabel?.text)!
+            else{
+                resultLable.text = resultLable.text! + "."
             }
+            
         case "+/-":
-            resultLable.text = "-\(resultLable.text!)"
+            inputInt = -inputInt
         case "%":
-            let resultLabelNumber = Double(resultLable.text!)
-            resultLable.text =  "\(resultLabelNumber! / 100)"
+            if firstInput == 0 {
+                inputInt = inputInt / 100
+            }
+            else {
+                secondInput = firstInput * inputInt / 100
+            }
+            stillTiping = false
         default: break
         }
     }
