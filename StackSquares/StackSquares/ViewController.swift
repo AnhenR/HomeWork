@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     private func makeFirstView() -> UIView {
-        var myView = UIView()
+        let myView = UIView()
         myView.translatesAutoresizingMaskIntoConstraints = false
         myView.backgroundColor = .blue
         return myView
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     }
     
     private func makeSecondView() -> UIView {
-        var myView = UIView()
+        let myView = UIView()
         myView.translatesAutoresizingMaskIntoConstraints = false
         myView.backgroundColor = .cyan
         return myView
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
     }
     
     private func makeThirdView() -> UIView {
-        var myView = UIView()
+        let myView = UIView()
         myView.translatesAutoresizingMaskIntoConstraints = false
         myView.backgroundColor = .darkGray
         return myView
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
     }
     
     private func makeFourthView() -> UIView {
-        var myView = UIView()
+        let myView = UIView()
         myView.translatesAutoresizingMaskIntoConstraints = false
         myView.backgroundColor = .magenta
         return myView
