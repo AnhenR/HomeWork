@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)])
 
         
-        for index in 0..<(imageViewArray.count) {
+        imageViewArray.enumerated().forEach{ index, item in
             imageViewArray[index].widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
             imageViewArray[index].topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
             imageViewArray[index].bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
