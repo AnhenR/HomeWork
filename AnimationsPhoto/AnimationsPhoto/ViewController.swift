@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     private var leftAnchor: NSLayoutConstraint?
     private var leftSideConstant: CGFloat = 0
 
-    private lazy var imageViewArray = [makeImageView(with: UIImage(named: "природа1")!),
-                                       makeImageView(with: UIImage(named: "природа2")!),
-                                       makeImageView(with: UIImage(named: "природа3")!),
-                                       makeImageView(with: UIImage(named: "природа4")!),
-                                       makeImageView(with: UIImage(named: "природа5")!)]
+    private lazy var imageViewArray = [makeImageView(with: UIImage(named: "природа1") ?? UIImage()),
+                                       makeImageView(with: UIImage(named: "природа2") ?? UIImage()),
+                                       makeImageView(with: UIImage(named: "природа3") ?? UIImage()),
+                                       makeImageView(with: UIImage(named: "природа4") ?? UIImage()),
+                                       makeImageView(with: UIImage(named: "природа5") ?? UIImage())]
     
     override func viewDidLoad() {
         super.viewDidLoad()
