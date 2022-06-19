@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private var inputInt: Double {
         
         get {
-            return Double(resultLable.text!)!
+            return Double(resultLable.text ?? "0") ?? 0
         }
         set {
             let new = "\(newValue)"
@@ -32,19 +32,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLable: UILabel!
     @IBOutlet var allButton: [UIButton]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        for button in allButton {
-            button.layer.cornerRadius = button.frame.height / 2
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        allButton.forEach{ $0.layer.cornerRadius = $0.frame.height / 2}
+
     }
     
     @IBAction func tapNumberButton(_ sender: UIButton) {
         let digit = sender.titleLabel?.text
         if stillTiping{
-            if resultLable.text!.count < 7 {
-                resultLable.text = resultLable.text! + (digit)!
+            if resultLable.text?.count ?? 0 < 7 {
+                resultLable.text = resultLable.text! + (digit ?? "0")
             }
         }
         else {
@@ -63,11 +61,11 @@ class ViewController: UIViewController {
             stillTiping = false
             
         case ",":
-            if (resultLable.text?.contains("."))! {
+            if (((resultLable.text?.contains("."))) != nil) {
                 resultLable.text = resultLable.text
             }
             else{
-                resultLable.text = resultLable.text! + "."
+                resultLable.text = resultLable.text ?? "0" + "."
             }
             
         case "+/-":
@@ -85,7 +83,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func maths(_ sender: UIButton) {
-        operation = (sender.titleLabel?.text)!
+        operation = (sender.titleLabel?.text) ?? "0"
         firstInput = inputInt
         stillTiping = false
     }
