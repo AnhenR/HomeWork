@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     }
     private func navigation(){
         let storyboard = UIStoryboard(name: "ScreenToShowStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ScreenToShowViewController") as! ScreenToShowViewController
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "ScreenToShowViewController") as? ScreenToShowViewController else {
+            return
+        }
         viewController.modalPresentationStyle = .fullScreen
         viewController.setName1 = myName.firstName
         viewController.setName2 = myName.secondName
