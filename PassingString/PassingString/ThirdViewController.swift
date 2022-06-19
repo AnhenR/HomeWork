@@ -31,7 +31,9 @@ class ThirdViewController: UIViewController {
     }
     @objc func didTapThirdButton(){
         let storyboard = UIStoryboard(name: "FourthStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FourthViewController") as! FourthViewController
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "FourthViewController") as? FourthViewController else {
+            return
+        }
         viewController.setString(newString: thirdLaughString)
         navigationController?.pushViewController(viewController, animated: true)
     }

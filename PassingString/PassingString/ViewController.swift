@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     
     private func navigation(){
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController else {
+            return
+        }
         viewController.setString(newString: laughString)
         navigationController?.pushViewController(viewController, animated: true)
     }
