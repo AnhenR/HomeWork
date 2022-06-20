@@ -29,6 +29,8 @@ class GameViewController: UIViewController {
     private var whiteBallBottomAnchor: NSLayoutConstraint?
     private var bush1TopAnchor: NSLayoutConstraint?
     private var bush1BottomAnchor: NSLayoutConstraint?
+    private var roadLeadingAnchor: NSLayoutConstraint?
+    private var roadTrailingAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +50,21 @@ class GameViewController: UIViewController {
         createBushVerticalTimer()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       carLeadingAnchor = car.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat((roadLeadingAnchor?.constant ?? 50) + 100))
+       carLeadingAnchor?.isActive = true
+       carTrailingAnchor = car.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: CGFloat((roadTrailingAnchor?.constant ?? 50) + 50))
+       carTrailingAnchor?.isActive = true
+        
+    }
+    
     private func makeUI() {
         road.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        road.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        road.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        roadLeadingAnchor = road.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
+        roadLeadingAnchor?.isActive = true
+        roadTrailingAnchor = road.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        roadTrailingAnchor?.isActive = true
         road.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         markup.topAnchor.constraint(equalTo: road.topAnchor).isActive = true
@@ -61,10 +74,6 @@ class GameViewController: UIViewController {
         
         carTopAnchor = car.topAnchor.constraint(equalTo: view.topAnchor, constant: 542)
         carTopAnchor?.isActive = true
-        carLeadingAnchor = car.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 225)
-        carLeadingAnchor?.isActive = true
-        carTrailingAnchor = car.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -60)
-        carTrailingAnchor?.isActive = true
         car.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
         
         grayBallTopAnchor = grayBall.topAnchor.constraint(equalTo: view.topAnchor)
@@ -90,7 +99,7 @@ class GameViewController: UIViewController {
         bush1.heightAnchor.constraint(equalToConstant: 50).isActive = true
         bush1BottomAnchor = bush1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50)
         bush1BottomAnchor?.isActive = false
-  
+        
         let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe))
         leftGesture.direction = .left
         view.addGestureRecognizer(leftGesture)
@@ -130,32 +139,30 @@ class GameViewController: UIViewController {
     }
     
     @objc func didSwipe(sender: UISwipeGestureRecognizer){
-        guard let carLeadingAnchor = carLeadingAnchor,
-              let carTrailingAnchor = carTrailingAnchor else {
-                  return
-              }
-        UIView.animate(withDuration: 60, delay: 30){
-            if sender.direction == .right {
-                self.carLeadingAnchor?.isActive = false
-                self.carTrailingAnchor?.isActive = false
-                self.carLeadingAnchor?.constant += 40
-                self.carTrailingAnchor?.constant += 40
-                self.carLeadingAnchor?.isActive = true
-                self.carTrailingAnchor?.isActive = true
-            } else if carLeadingAnchor.constant <= 50 {
-                self.performSegue(withIdentifier: "next", sender: self)
-           }
-            else if sender.direction == .left {
-                self.carLeadingAnchor?.isActive = false
-                self.carTrailingAnchor?.isActive = false
-                self.carLeadingAnchor?.constant -= 40
-                self.carTrailingAnchor?.constant -= 40
-                self.carLeadingAnchor?.isActive = true
-                self.carTrailingAnchor?.isActive = true
-            }  else if carTrailingAnchor.constant >= -150 {
-                self.performSegue(withIdentifier: "next", sender: self)
-            }
+        if sender.direction == .right {
+            self.leftTurn()
+        } else if sender.direction == .left {
+            self.rightTurn()
         }
+    }
+    
+    private func leftTurn() {
+        
+        self.carLeadingAnchor?.isActive = false
+        self.carTrailingAnchor?.isActive = false
+        self.carLeadingAnchor?.constant += 40
+        self.carTrailingAnchor?.constant += 40
+        self.carLeadingAnchor?.isActive = true
+        self.carTrailingAnchor?.isActive = true
+    }
+    
+    private func rightTurn() {
+        self.carLeadingAnchor?.isActive = false
+        self.carTrailingAnchor?.isActive = false
+        self.carLeadingAnchor?.constant -= 40
+        self.carTrailingAnchor?.constant -= 40
+        self.carLeadingAnchor?.isActive = true
+        self.carTrailingAnchor?.isActive = true
     }
     
     private func createGrayVerticalTimer() {
