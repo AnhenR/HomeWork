@@ -32,6 +32,8 @@ class GameViewController: UIViewController {
     private var roadLeadingAnchor: NSLayoutConstraint?
     private var roadTrailingAnchor: NSLayoutConstraint?
     
+    private var grayTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
@@ -45,17 +47,19 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        createGrayVerticalTimer()
+//        createGrayVerticalTimer()
         createWhiteVerticalTimer()
         createBushVerticalTimer()
+        //        creaRoadVerticalTimer()
+                objecеСollision()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       carLeadingAnchor = car.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat((roadLeadingAnchor?.constant ?? 50) + 100))
-       carLeadingAnchor?.isActive = true
-       carTrailingAnchor = car.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: CGFloat((roadTrailingAnchor?.constant ?? 50) + 50))
-       carTrailingAnchor?.isActive = true
+        carLeadingAnchor = car.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat((roadLeadingAnchor?.constant ?? 50) + 100))
+        carLeadingAnchor?.isActive = true
+        carTrailingAnchor = car.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: CGFloat((roadTrailingAnchor?.constant ?? 50) + 50))
+        carTrailingAnchor?.isActive = true
         
     }
     
@@ -67,10 +71,10 @@ class GameViewController: UIViewController {
         roadTrailingAnchor?.isActive = true
         road.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        markup.topAnchor.constraint(equalTo: road.topAnchor).isActive = true
-        markup.leadingAnchor.constraint(equalTo: road.leadingAnchor, constant: 147).isActive = true
-        markup.trailingAnchor.constraint(equalTo: road.trailingAnchor,constant: -147).isActive = true
-        markup.bottomAnchor.constraint(equalTo: road.bottomAnchor).isActive = true
+        //        markup.topAnchor.constraint(equalTo: road.topAnchor).isActive = true
+        //        markup.leadingAnchor.constraint(equalTo: road.leadingAnchor, constant: 147).isActive = true
+        //        markup.trailingAnchor.constraint(equalTo: road.trailingAnchor,constant: -147).isActive = true
+        //        markup.bottomAnchor.constraint(equalTo: road.bottomAnchor).isActive = true
         
         carTopAnchor = car.topAnchor.constraint(equalTo: view.topAnchor, constant: 542)
         carTopAnchor?.isActive = true
@@ -95,8 +99,8 @@ class GameViewController: UIViewController {
         bush1TopAnchor = bush1.topAnchor.constraint(equalTo: view.topAnchor)
         bush1TopAnchor?.isActive = true
         bush1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        bush1.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        bush1.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        bush1.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        bush1.heightAnchor.constraint(equalToConstant: 70).isActive = true
         bush1BottomAnchor = bush1.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50)
         bush1BottomAnchor?.isActive = false
         
@@ -133,7 +137,7 @@ class GameViewController: UIViewController {
         whiteBall.layer.cornerRadius = 50
         
         view.addSubview(bush1)
-        bush1.image = .init(named: "bush1")
+        bush1.image = .init(named: "bush")
         bush1.translatesAutoresizingMaskIntoConstraints = false
         bush1.contentMode = .scaleAspectFit
     }
@@ -147,12 +151,11 @@ class GameViewController: UIViewController {
     }
     
     private func leftTurn() {
-        
         self.carLeadingAnchor?.isActive = false
         self.carTrailingAnchor?.isActive = false
         self.carLeadingAnchor?.constant += 40
-        self.carTrailingAnchor?.constant += 40
         self.carLeadingAnchor?.isActive = true
+        self.carTrailingAnchor?.constant += 40
         self.carTrailingAnchor?.isActive = true
     }
     
@@ -186,6 +189,26 @@ class GameViewController: UIViewController {
         }
     }
     
+    private func creaRoadVerticalTimer() {
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            self.animateRoad()
+        }
+    }
+    
+    private func animateRoad() {
+        roadLeadingAnchor?.isActive = false
+        roadTrailingAnchor?.isActive = false
+        UIView.animate(withDuration: 10.0, delay: 3, options: [.repeat]) {
+            self.view.layoutIfNeeded()
+        } completion: { [weak self] _ in
+            self?.roadLeadingAnchor?.constant += 10
+            self?.roadTrailingAnchor?.constant -= 10
+            self?.roadLeadingAnchor?.isActive = true
+            self?.roadTrailingAnchor?.isActive = true
+        }
+    }
+    
     private func animateGrayBottom() {
         grayBallTopAnchor?.isActive = false
         grayBallBottomAnchor?.isActive = true
@@ -211,13 +234,14 @@ class GameViewController: UIViewController {
     }
     
     private func objecеСollision() {
-        guard let grayBallBottomAnchor = grayBallBottomAnchor,
-              let whiteBallBottomAnchor = whiteBallBottomAnchor,
-              let carTopAnchor = carTopAnchor else {
-                  return
-              }
+       grayTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+                let crash = self.grayBall.layer.presentation()!.frame.intersects(self.car.layer.presentation()!.frame)
+                if crash == true {
+                    self.grayTimer?.invalidate()
+                }
+                else {
+                    self.animateGrayBottom()
+                }
+            }
     }
 }
-
-
-
