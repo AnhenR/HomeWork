@@ -58,6 +58,10 @@ class ViewController: UIViewController {
         myImage.image = image
         myImage.translatesAutoresizingMaskIntoConstraints = false
         myImage.contentMode = .scaleAspectFit
+        myImage.layer.shadowColor = UIColor.gray.cgColor
+        myImage.layer.shadowOffset = CGSize(width: 13, height: 13)
+        myImage.layer.shadowOpacity = 0.8
+        myImage.layer.shadowRadius = 6
         return myImage
     }
    
