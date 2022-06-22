@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2AC3AB286336530096E548 /* UsefulExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2AC3AA286336530096E548 /* UsefulExtension.swift */; };
 		CE606B85284D802600EAA707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE606B84284D802600EAA707 /* AppDelegate.swift */; };
 		CE606B87284D802600EAA707 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE606B86284D802600EAA707 /* SceneDelegate.swift */; };
 		CE606B89284D802600EAA707 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE606B88284D802600EAA707 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE2AC3AA286336530096E548 /* UsefulExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulExtension.swift; sourceTree = "<group>"; };
 		CE606B81284D802600EAA707 /* Race.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Race.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE606B84284D802600EAA707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE606B86284D802600EAA707 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CE606B84284D802600EAA707 /* AppDelegate.swift */,
 				CE606B86284D802600EAA707 /* SceneDelegate.swift */,
 				CE606B88284D802600EAA707 /* ViewController.swift */,
+				CE2AC3AA286336530096E548 /* UsefulExtension.swift */,
 				CE606B8A284D802600EAA707 /* Main.storyboard */,
 				CE606B8D284D802900EAA707 /* Assets.xcassets */,
 				CE606B8F284D802900EAA707 /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 			files = (
 				CEF79449284DF13B00644C1A /* GameViewController.swift in Sources */,
 				CE606B89284D802600EAA707 /* ViewController.swift in Sources */,
+				CE2AC3AB286336530096E548 /* UsefulExtension.swift in Sources */,
 				CE606B85284D802600EAA707 /* AppDelegate.swift in Sources */,
 				CE606B87284D802600EAA707 /* SceneDelegate.swift in Sources */,
 				CEF7944D284DF19B00644C1A /* RecordTableViewController.swift in Sources */,

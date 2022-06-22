@@ -57,12 +57,3 @@ class ViewController: UIViewController {
         present(viewController, animated: true)
     }
 }
-
-extension UIView {
-    func addShadow(shadowColor: UIColor = .gray,shadowOffset: CGSize = CGSize(width: 8, height: 8),shadowOpacity: Float = 0.5,shadowRadius: Double = 6 ) {
-        layer.shadowColor = shadowColor.cgColor
-        layer.shadowOffset = shadowOffset
-        layer.shadowOpacity = shadowOpacity
-        layer.shadowRadius = shadowRadius
-    }
-}
