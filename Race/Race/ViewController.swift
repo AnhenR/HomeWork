@@ -17,9 +17,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        welcomeLabel.addShadow()
         startGameButton.layer.cornerRadius = 20
+        startGameButton.addShadow()
         settingsButton.layer.cornerRadius = 20
+        settingsButton.addShadow()
         recordTableButton.layer.cornerRadius = 20
+        recordTableButton.addShadow()
     }
     
     @IBAction func startGameButtonAction(_ sender: Any) {
@@ -54,3 +58,11 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIView {
+    func addShadow(shadowColor: UIColor = .gray,shadowOffset: CGSize = CGSize(width: 8, height: 8),shadowOpacity: Float = 0.5,shadowRadius: Double = 6 ) {
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOffset = shadowOffset
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowRadius = shadowRadius
+    }
+}

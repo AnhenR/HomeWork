@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
     private let grayBall = UIView()
     private let whiteBall = UIView()
     private let bush1 = UIImageView()
-    private let bush2 = UIImageView()
     
     private var carLeadingAnchor: NSLayoutConstraint?
     private var carTrailingAnchor: NSLayoutConstraint?
@@ -32,7 +31,12 @@ class GameViewController: UIViewController {
     private var roadLeadingAnchor: NSLayoutConstraint?
     private var roadTrailingAnchor: NSLayoutConstraint?
     
+    private var isFirstLaunch = true
+    
     private var grayTimer: Timer?
+    private var whiteTimer: Timer?
+    private var bushTimer: Timer?
+    private var colissionTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,26 +45,23 @@ class GameViewController: UIViewController {
         makeUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        createGrayVerticalTimer()
-        createWhiteVerticalTimer()
-        createBushVerticalTimer()
-        //        creaRoadVerticalTimer()
-                objecеСollision()
+        animateBushBottom()
+        animateWhiteBottom()
+        animateGrayBottom()
+        objectColission()
+        creaRoadVerticalTimer()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        guard isFirstLaunch else { return }
         carLeadingAnchor = car.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat((roadLeadingAnchor?.constant ?? 50) + 100))
         carLeadingAnchor?.isActive = true
         carTrailingAnchor = car.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: CGFloat((roadTrailingAnchor?.constant ?? 50) + 50))
         carTrailingAnchor?.isActive = true
-        
+        isFirstLaunch = false
     }
     
     private func makeUI() {
@@ -71,10 +72,10 @@ class GameViewController: UIViewController {
         roadTrailingAnchor?.isActive = true
         road.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        //        markup.topAnchor.constraint(equalTo: road.topAnchor).isActive = true
-        //        markup.leadingAnchor.constraint(equalTo: road.leadingAnchor, constant: 147).isActive = true
-        //        markup.trailingAnchor.constraint(equalTo: road.trailingAnchor,constant: -147).isActive = true
-        //        markup.bottomAnchor.constraint(equalTo: road.bottomAnchor).isActive = true
+        markup.topAnchor.constraint(equalTo: road.topAnchor).isActive = true
+        markup.leadingAnchor.constraint(equalTo: road.leadingAnchor, constant: 147).isActive = true
+        markup.trailingAnchor.constraint(equalTo: road.trailingAnchor,constant: -147).isActive = true
+        markup.bottomAnchor.constraint(equalTo: road.bottomAnchor).isActive = true
         
         carTopAnchor = car.topAnchor.constraint(equalTo: view.topAnchor, constant: 542)
         carTopAnchor?.isActive = true
@@ -168,29 +169,8 @@ class GameViewController: UIViewController {
         self.carTrailingAnchor?.isActive = true
     }
     
-    private func createGrayVerticalTimer() {
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            self.animateGrayBottom()
-        }
-    }
-    
-    private func createWhiteVerticalTimer() {
-        Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            self.animateWhiteBottom()
-        }
-    }
-    
-    private func createBushVerticalTimer() {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            self.animateBushBottom()
-        }
-    }
-    
     private func creaRoadVerticalTimer() {
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] timer in
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { [weak self] timer in
             guard let self = self else { return }
             self.animateRoad()
         }
@@ -199,49 +179,73 @@ class GameViewController: UIViewController {
     private func animateRoad() {
         roadLeadingAnchor?.isActive = false
         roadTrailingAnchor?.isActive = false
-        UIView.animate(withDuration: 10.0, delay: 3, options: [.repeat]) {
+        roadLeadingAnchor?.constant += 10
+        roadTrailingAnchor?.constant += 10
+        roadLeadingAnchor?.isActive = true
+        roadTrailingAnchor?.isActive = true
+        UIView.animate(withDuration: 1.0) {
             self.view.layoutIfNeeded()
-        } completion: { [weak self] _ in
-            self?.roadLeadingAnchor?.constant += 10
-            self?.roadTrailingAnchor?.constant -= 10
-            self?.roadLeadingAnchor?.isActive = true
-            self?.roadTrailingAnchor?.isActive = true
         }
     }
     
     private func animateGrayBottom() {
-        grayBallTopAnchor?.isActive = false
-        grayBallBottomAnchor?.isActive = true
-        UIView.animate(withDuration: 10.0, delay: 0, options: [.repeat]) {
-            self.view.layoutIfNeeded()
+        self.grayTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
+            self.grayBallTopAnchor?.isActive = false
+            self.grayBallBottomAnchor?.isActive = true
+            UIView.animate(withDuration: 10.0, delay: 0) {
+                self.view.layoutIfNeeded()
+            } completion: {_ in
+                self.grayBallTopAnchor?.isActive = true
+                self.grayBallBottomAnchor?.isActive = false
+            }
         }
     }
     
     private func animateWhiteBottom() {
-        whiteBallTopAnchor?.isActive = false
-        whiteBallBottomAnchor?.isActive = true
-        UIView.animate(withDuration: 10.0, delay: 0, options: [.repeat]) {
-            self.view.layoutIfNeeded()
+        self.whiteTimer = Timer.scheduledTimer(withTimeInterval: 13.0, repeats: true) { _ in
+            self.whiteBallTopAnchor?.isActive = false
+            self.whiteBallBottomAnchor?.isActive = true
+            UIView.animate(withDuration: 10.0, delay: 0) {
+                self.view.layoutIfNeeded()
+            } completion: {_ in
+                self.whiteBallTopAnchor?.isActive = true
+                self.whiteBallBottomAnchor?.isActive = false
+            }
         }
     }
     
     private func animateBushBottom() {
-        bush1TopAnchor?.isActive = false
-        bush1BottomAnchor?.isActive = true
-        UIView.animate(withDuration: 15.0, delay: 0, options: [.repeat]) {
-            self.view.layoutIfNeeded()
+        self.bushTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            self.bush1TopAnchor?.isActive = false
+            self.bush1BottomAnchor?.isActive = true
+            UIView.animate(withDuration: 15.0, delay: 0) {
+                self.view.layoutIfNeeded()
+            } completion: {_ in
+                self.bush1TopAnchor?.isActive = true
+                self.bush1BottomAnchor?.isActive = false
+            }
         }
     }
     
-    private func objecеСollision() {
-       grayTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
-                let crash = self.grayBall.layer.presentation()!.frame.intersects(self.car.layer.presentation()!.frame)
-                if crash == true {
-                    self.grayTimer?.invalidate()
-                }
-                else {
-                    self.animateGrayBottom()
-                }
+    private func objectColission() {
+        colissionTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            let grayCrash = self.grayBall.layer.presentation()!.frame.intersects(self.car.layer.presentation()!.frame)
+            let whiteCrash = self.whiteBall.layer.presentation()!.frame.intersects(self.car.layer.presentation()!.frame)
+            if grayCrash || whiteCrash {
+                self.colissionTimer?.invalidate()
+                self.grayTimer?.invalidate()
+                self.bushTimer?.invalidate()
+                self.whiteTimer?.invalidate()
+                self.bush1TopAnchor?.isActive = true
+                self.bush1BottomAnchor?.isActive = false
+                self.grayBallTopAnchor?.isActive = true
+                self.grayBallBottomAnchor?.isActive = false
+                self.whiteBallTopAnchor?.isActive = true
+                self.whiteBallBottomAnchor?.isActive = false
+                self.view.layoutIfNeeded()
             }
+        })
     }
 }
+
