@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let string = "Welcome to the game"
+    
     @IBOutlet weak var welcomeLabel: UILabel!
     
     @IBOutlet weak var startGameButton: UIButton!
@@ -24,6 +26,19 @@ class ViewController: UIViewController {
         settingsButton.addShadow()
         recordTableButton.layer.cornerRadius = 20
         recordTableButton.addShadow()
+        
+        let attributedString = NSMutableAttributedString(string: string)
+        let range = (string as NSString).range(of: "Welcome")
+        let range2 = (string as NSString).range(of: "to")
+        let range3 = (string as NSString).range(of: "the")
+        let range4 = (string as NSString).range(of: "game")
+        attributedString.addAttribute(.foregroundColor, value: UIColor.white.cgColor , range: range)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.gray.cgColor , range: range2)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.darkGray.cgColor , range: range3)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.black.cgColor , range: range4)
+        welcomeLabel.attributedText = attributedString
+        welcomeLabel.font = UIFont(name: "OpenSans-Bold", size: 15)
+        view.addGradient()
     }
     
     @IBAction func startGameButtonAction(_ sender: Any) {
