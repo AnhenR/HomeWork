@@ -88,12 +88,14 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
                 self.view.frame.origin.x = self.view.frame.width - 140
             } completion: { (no) in
+                self.blur()
                 
             }
         } else {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
                 self.view.frame.origin.x = 0
             } completion: { (no) in
+                self.view.viewWithTag(666)?.isHidden = true
                 
             }
         }
@@ -103,13 +105,13 @@ class ViewController: UIViewController {
         configureShow()
         ifShow = !ifShow
         showSidebar(show: ifShow)
-        blur()
     }
     
     private func blur() {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
+        blurEffectView.tag = 666
         view.insertSubview(blurEffectView, at: 0)
     }
     
