@@ -61,14 +61,14 @@ class ViewController: UIViewController {
     private func showSettings(){
         let storyboard = UIStoryboard(name: "SettingsStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
-        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalPresentationStyle = .popover
         present(viewController, animated: true)
     }
     
     private func showRecordTable(){
         let storyboard = UIStoryboard(name: "RecordTableStoryboard", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RecordTableViewController")
-        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalPresentationStyle = .popover
         present(viewController, animated: true)
     }
 }

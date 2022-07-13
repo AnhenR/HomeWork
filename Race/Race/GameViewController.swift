@@ -51,7 +51,7 @@ class GameViewController: UIViewController {
         animateWhiteBottom()
         animateGrayBottom()
         objectColission()
-        creaRoadVerticalTimer()
+        //        creaRoadVerticalTimer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -123,19 +123,46 @@ class GameViewController: UIViewController {
         road.addSubview(markup)
         
         view.addSubview(car)
-        car.image = .init(named: "car")
+        let carColor = UserDefaults.standard.value(forKey: "car") as? String
+        switch carColor {
+        case "car1" :
+            car.image = .init(named: "car")
+        case "car2" :
+            car.image = .init(named: "secondCar")
+        default:
+            break
+        }
         car.translatesAutoresizingMaskIntoConstraints = false
         car.contentMode = .scaleAspectFit
         
-        grayBall.backgroundColor = .gray
-        grayBall.translatesAutoresizingMaskIntoConstraints = false
         road.addSubview(grayBall)
-        grayBall.layer.cornerRadius = 50
+        grayBall.translatesAutoresizingMaskIntoConstraints = false
+        let grayColor = UserDefaults.standard.value(forKey: "ball1") as? String
+        switch grayColor{
+        case "grayBall1" :
+            grayBall.backgroundColor = .gray
+            grayBall.layer.cornerRadius = 50
+        case "grayBall2" :
+            grayBall.backgroundColor = .yellow
+            grayBall.layer.cornerRadius = 20
+        default:
+            break
+        }
         
-        whiteBall.backgroundColor = .white
-        whiteBall.translatesAutoresizingMaskIntoConstraints = false
+        
         road.addSubview(whiteBall)
-        whiteBall.layer.cornerRadius = 50
+        whiteBall.translatesAutoresizingMaskIntoConstraints = false
+        let whiteColor = UserDefaults.standard.value(forKey: "ball2") as? String
+        switch whiteColor{
+        case "whiteBall1" :
+            whiteBall.backgroundColor = .white
+            whiteBall.layer.cornerRadius = 50
+        case "whiteBall2" :
+            whiteBall.backgroundColor = .green
+            whiteBall.layer.cornerRadius = 20
+        default:
+            break
+        }
         
         view.addSubview(bush1)
         bush1.image = .init(named: "bush")
