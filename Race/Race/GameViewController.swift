@@ -123,7 +123,7 @@ class GameViewController: UIViewController {
         road.addSubview(markup)
         
         view.addSubview(car)
-        let carColor = UserDefaults.standard.value(forKey: "car") as? String
+        let carColor = UserDefaults.standard.value(forKey: .car) as? String
         switch carColor {
         case "car1" :
             car.image = .init(named: "car")
@@ -137,7 +137,7 @@ class GameViewController: UIViewController {
         
         road.addSubview(grayBall)
         grayBall.translatesAutoresizingMaskIntoConstraints = false
-        let grayColor = UserDefaults.standard.value(forKey: "ball1") as? String
+        let grayColor = UserDefaults.standard.value(forKey: .ball1) as? String
         switch grayColor{
         case "grayBall1" :
             grayBall.backgroundColor = .gray
@@ -152,7 +152,7 @@ class GameViewController: UIViewController {
         
         road.addSubview(whiteBall)
         whiteBall.translatesAutoresizingMaskIntoConstraints = false
-        let whiteColor = UserDefaults.standard.value(forKey: "ball2") as? String
+        let whiteColor = UserDefaults.standard.value(forKey: .ball2) as? String
         switch whiteColor{
         case "whiteBall1" :
             whiteBall.backgroundColor = .white

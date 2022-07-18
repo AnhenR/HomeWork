@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum UserDefaultsKeys : String {
+    case car = "car"
+    case ball1 = "ball1"
+    case ball2 = "ball2"
+}
+
 class SettingsViewController: UIViewController {
     
     private let settingsLabel = UILabel()
@@ -90,14 +96,24 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func didTapFirstLevelButton(){
-        UserDefaults.standard.set("car1", forKey: "car")
-        UserDefaults.standard.set("grayBall1", forKey: "ball1")
-        UserDefaults.standard.set("whiteBall1", forKey: "ball2")
+        UserDefaults.standard.set("car1", forKey: .car)
+        UserDefaults.standard.set("grayBall1", forKey: .ball1)
+        UserDefaults.standard.set("whiteBall1", forKey: .ball2)
     }
     
     @objc func didTapSecondLevelButton(){
-        UserDefaults.standard.set("car2", forKey: "car")
-        UserDefaults.standard.set("grayBall2", forKey: "ball1")
-        UserDefaults.standard.set("whiteBall2", forKey: "ball2")
+        UserDefaults.standard.set("car2", forKey: .car)
+        UserDefaults.standard.set("grayBall2", forKey: .ball1)
+        UserDefaults.standard.set("whiteBall2", forKey: .ball2)
+    }
+}
+
+extension UserDefaults  {
+    func set(_ value: Any?, forKey key: UserDefaultsKeys) {
+        set(value, forKey: key.rawValue)
+    }
+    
+    func value(forKey key: UserDefaultsKeys) -> Any? {
+        return value(forKey: key.rawValue)
     }
 }
