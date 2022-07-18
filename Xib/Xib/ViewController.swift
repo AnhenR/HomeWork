@@ -21,17 +21,25 @@ class ViewController: UIViewController {
     }
     
     @objc private func alert() {
-        let alert = UIAlertController(title: "Eror", message: "oh", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Hi", style: .default) { _ in
-            let storyboard = UIStoryboard(name: "ImageStoryboard", bundle: nil)
-            guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImageController") as? ImageController else {
-                return
-            }
-            viewController.modalPresentationStyle = .fullScreen
-            self.present(viewController, animated: true)
+        let alertController = UIAlertController(title: "Перейти к картинкам", message: "сейчас", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Перейти", style: .default) { _ in
+            guard let text = alertController.textFields else {return}
+            text[0].text == "123" ? self.next() : print("no")
         }
-        alert.addAction(action)
-        present(alert, animated: true)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Password"
+        }
+        alertController.addAction(action)
+        present(alertController, animated: true)
     }
+    
+    func next() {
+        let storyboard = UIStoryboard(name: "ImageStoryboard", bundle: nil)
+       guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImageController") as? ImageController else {
+           return
+       }
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true)
+}
 }
 
