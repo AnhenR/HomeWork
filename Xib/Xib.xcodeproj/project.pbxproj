@@ -15,6 +15,8 @@
 		CEAEA7972884BB59005F38A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAEA7952884BB59005F38A7 /* LaunchScreen.storyboard */; };
 		CEAEA7A42884BCFA005F38A7 /* MyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA7A32884BCFA005F38A7 /* MyAlert.swift */; };
 		CEAEA7A828857BC3005F38A7 /* MyAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAEA7A728857BC3005F38A7 /* MyAlert.xib */; };
+		CEAEA7AA2885A4F9005F38A7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA7A92885A4F9005F38A7 /* ImageController.swift */; };
+		CEAEA7AC2885A522005F38A7 /* ImageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CEAEA7982884BB59005F38A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEAEA7A32884BCFA005F38A7 /* MyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlert.swift; sourceTree = "<group>"; };
 		CEAEA7A728857BC3005F38A7 /* MyAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAlert.xib; sourceTree = "<group>"; };
+		CEAEA7A92885A4F9005F38A7 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				CEAEA78C2884BB55005F38A7 /* SceneDelegate.swift */,
 				CEAEA78E2884BB55005F38A7 /* ViewController.swift */,
 				CEAEA7902884BB55005F38A7 /* Main.storyboard */,
+				CEAEA7A92885A4F9005F38A7 /* ImageController.swift */,
+				CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */,
 				CEAEA7932884BB59005F38A7 /* Assets.xcassets */,
 				CEAEA7952884BB59005F38A7 /* LaunchScreen.storyboard */,
 				CEAEA7982884BB59005F38A7 /* Info.plist */,
@@ -140,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAEA7972884BB59005F38A7 /* LaunchScreen.storyboard in Resources */,
+				CEAEA7AC2885A522005F38A7 /* ImageStoryboard.storyboard in Resources */,
 				CEAEA7942884BB59005F38A7 /* Assets.xcassets in Resources */,
 				CEAEA7A828857BC3005F38A7 /* MyAlert.xib in Resources */,
 				CEAEA7922884BB55005F38A7 /* Main.storyboard in Resources */,
@@ -153,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAEA7AA2885A4F9005F38A7 /* ImageController.swift in Sources */,
 				CEAEA78F2884BB55005F38A7 /* ViewController.swift in Sources */,
 				CEAEA78B2884BB55005F38A7 /* AppDelegate.swift in Sources */,
 				CEAEA7A42884BCFA005F38A7 /* MyAlert.swift in Sources */,

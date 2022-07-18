@@ -23,7 +23,12 @@ class ViewController: UIViewController {
     @objc private func alert() {
         let alert = UIAlertController(title: "Eror", message: "oh", preferredStyle: .alert)
         let action = UIAlertAction(title: "Hi", style: .default) { _ in
-            print("Hi")
+            let storyboard = UIStoryboard(name: "ImageStoryboard", bundle: nil)
+            guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImageController") as? ImageController else {
+                return
+            }
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true)
         }
         alert.addAction(action)
         present(alert, animated: true)
