@@ -33,13 +33,13 @@ class ViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    func next() {
+    private func next() {
         let storyboard = UIStoryboard(name: "ImageStoryboard", bundle: nil)
-       guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImageController") as? ImageController else {
-           return
-       }
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImageController") as? ImageController else {
+            return
+        }
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
-}
+    }
 }
 
