@@ -70,6 +70,7 @@ class ImageController: UIViewController {
         likeButton.setBackgroundImage(UIImage(named: "beforeLike"), for: .normal)
         likeButton.setBackgroundImage(UIImage(named: "afterLike"), for: .selected)
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
+
         
         backgroundView.addSubview(commentField)
         commentField.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +93,11 @@ class ImageController: UIViewController {
         dismiss(animated: true)
     }
     
-    @objc private func didTapLike(_ sender: UIButton) {
+    @objc private func didTapLike() {
+        if likeButton.isSelected == false {
             likeButton.isSelected = true
+        } else {
+            likeButton.isSelected = false
+        }
     }
 }
