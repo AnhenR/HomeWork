@@ -34,12 +34,12 @@ class ImageController: UIViewController {
             scrollView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 500),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             
             backgroundView.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -230),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            backgroundView.heightAnchor.constraint(equalToConstant: 40),
             
             commentField.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             commentField.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
@@ -78,7 +78,6 @@ class ImageController: UIViewController {
         commentField.placeholder = "Speak out!"
         commentField.textAlignment = .left
         commentField.keyboardAppearance = .dark
-        
     }
     
     private func makeImageView(with image: UIImage) -> UIImageView {
@@ -94,10 +93,6 @@ class ImageController: UIViewController {
     }
     
     @objc private func didTapLike() {
-        if likeButton.isSelected == false {
-            likeButton.isSelected = true
-        } else {
-            likeButton.isSelected = false
-        }
+        likeButton.isSelected = likeButton.isSelected ? false : true
     }
 }
