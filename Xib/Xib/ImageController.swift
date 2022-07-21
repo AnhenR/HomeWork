@@ -16,7 +16,7 @@ class ImageController: UIViewController {
     private let backgroundView = UIView()
     private let likeButton = UIButton()
     private let commentField = UITextField()
-    private lazy var imageViewArray = [makeImageView(with: UIImage(named: "природа1") ?? UIImage()), makeImageView(with: UIImage(named: "природа2") ?? UIImage())]
+    private lazy var imageViewArray = [makeImageView(with: UIImage(named: "природа1") ?? UIImage()), makeImageView(with: UIImage(named: "природа2") ?? UIImage()), makeImageView(with: UIImage(named: "природа3") ?? UIImage()), makeImageView(with: UIImage(named: "природа4") ?? UIImage())]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +60,11 @@ class ImageController: UIViewController {
             imageViewArray[index].widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             imageViewArray[index].topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
             imageViewArray[index].leadingAnchor.constraint(equalTo: index == 0 ? scrollView.leadingAnchor : imageViewArray[index - 1].trailingAnchor).isActive = true
+            
+            scrollView.contentSize = CGSize(width: (view.frame.width * CGFloat(index + 1)), height: scrollView.frame.height)
         }
     }
-    private var contentSize: CGSize {
-        CGSize(width: view.frame.width + 400, height: scrollView.frame.height)
-    }
+    
     private func makeUI() {
         view.addSubview(dismissButton)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ class ImageController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = contentSize
+        scrollView.isPagingEnabled = true
         
         view .addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
