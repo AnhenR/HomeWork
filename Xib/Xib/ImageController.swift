@@ -22,24 +22,7 @@ class ImageController: UIViewController {
         super.viewDidLoad()
         makeUI()
         configUI()
-        let showNotification = UIResponder.keyboardWillShowNotification
-        NotificationCenter.default.addObserver(forName: showNotification, object: nil, queue: .main) { notification in
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                self.bottomBackgroundView?.constant = -(keyboardSize.height + 10.0)
-                UIView.animate(withDuration: 5.0) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-        }
-
-        let hideNotification = UIResponder.keyboardWillHideNotification
-        NotificationCenter.default.addObserver(forName: hideNotification, object: nil, queue: .main) { _ in
-            self.bottomBackgroundView?.constant = -30
-            UIView.animate(withDuration: 5.0) {
-                self.view.layoutIfNeeded()
-            }
-        }
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
+        showKeyboard()
     }
     
     private func configUI() {
@@ -79,7 +62,9 @@ class ImageController: UIViewController {
             imageViewArray[index].leadingAnchor.constraint(equalTo: index == 0 ? scrollView.leadingAnchor : imageViewArray[index - 1].trailingAnchor).isActive = true
         }
     }
-    
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width + 400, height: scrollView.frame.height)
+    }
     private func makeUI() {
         view.addSubview(dismissButton)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +73,7 @@ class ImageController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentSize = contentSize
         
         view .addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +99,27 @@ class ImageController: UIViewController {
         myImage.translatesAutoresizingMaskIntoConstraints = false
         myImage.contentMode = .scaleAspectFit
         return myImage
+    }
+    
+    private func showKeyboard() {
+        let showNotification = UIResponder.keyboardWillShowNotification
+        NotificationCenter.default.addObserver(forName: showNotification, object: nil, queue: .main) { notification in
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.bottomBackgroundView?.constant = -(keyboardSize.height + 10.0)
+                UIView.animate(withDuration: 5.0) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+        
+        let hideNotification = UIResponder.keyboardWillHideNotification
+        NotificationCenter.default.addObserver(forName: hideNotification, object: nil, queue: .main) { _ in
+            self.bottomBackgroundView?.constant = -30
+            UIView.animate(withDuration: 5.0) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
     }
     
     @objc private func didTapDismiss() {
