@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     private let stopButton = UIButton()
     private var bottomStopButton: NSLayoutConstraint?
     private let goButton = UIButton()
+    private let reloadButton = UIButton()
+    private var bottomReloadButton: NSLayoutConstraint?
     private let textField = UITextField()
     
     private let webView: WKWebView = {
@@ -66,10 +68,17 @@ class ViewController: UIViewController {
             
             stopButton.heightAnchor.constraint(equalToConstant: 30),
             stopButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            stopButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            stopButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+            
+            reloadButton.leadingAnchor.constraint(equalTo: stopButton.trailingAnchor, constant: 5),
+            reloadButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            reloadButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         bottomStopButton = stopButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         bottomStopButton?.isActive = true
+        
+        bottomReloadButton = reloadButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        bottomReloadButton?.isActive = true
     }
     
     private func configureUI() {
@@ -97,6 +106,11 @@ class ViewController: UIViewController {
         stopButton.backgroundColor = .red
         stopButton.addTarget(self, action: #selector(didTapStop), for: .touchUpInside)
         
+        view.addSubview(reloadButton)
+        reloadButton.translatesAutoresizingMaskIntoConstraints = false
+        reloadButton.setImage(UIImage(named: "reload"), for: .normal)
+        reloadButton.addTarget(self, action: #selector(didTapReload), for: .touchUpInside)
+        
         view.addSubview(goButton)
         goButton.translatesAutoresizingMaskIntoConstraints = false
         goButton.setTitle("go", for: .normal)
@@ -123,7 +137,8 @@ class ViewController: UIViewController {
         let showNotification = UIResponder.keyboardWillShowNotification
         NotificationCenter.default.addObserver(forName: showNotification, object: nil, queue: .main) { notification in
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                self.bottomStopButton?.constant = -(keyboardSize.height + 10.0)
+                self.bottomStopButton?.constant = -(keyboardSize.height + 5)
+                self.bottomReloadButton?.constant = -(keyboardSize.height + 5)
                 UIView.animate(withDuration: 5.0) {
                     self.view.layoutIfNeeded()
                 }
@@ -133,6 +148,7 @@ class ViewController: UIViewController {
         let hideNotification = UIResponder.keyboardWillHideNotification
         NotificationCenter.default.addObserver(forName: hideNotification, object: nil, queue: .main) { _ in
             self.bottomStopButton?.constant = -10
+            self.bottomReloadButton?.constant = -10
             UIView.animate(withDuration: 5.0) {
                 self.view.layoutIfNeeded()
             }
@@ -149,15 +165,23 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapBack() {
-        webView.goBack()
+        if webView.canGoBack {
+            webView.goBack()
+        }
     }
     
     @objc func didTapForward() {
-        webView.goForward()
+        if webView.canGoForward {
+            webView.goForward()
+        }
     }
     
     @objc func didTapStop() {
         webView.stopLoading()
+    }
+    
+    @objc func didTapReload() {
+        webView.reload()
     }
     
     @objc func didTapGo() {
