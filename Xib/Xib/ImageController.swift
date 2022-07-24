@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ImageController: UIViewController {
+class ImageController: UIViewController, UIScrollViewDelegate {
     
     private let dismissButton = UIButton()
     private let scrollView = UIScrollView()
@@ -22,6 +22,7 @@ class ImageController: UIViewController {
         super.viewDidLoad()
         makeUI()
         configUI()
+        scrollViewSetting()
         showKeyboard()
     }
     
@@ -31,11 +32,6 @@ class ImageController: UIViewController {
             dismissButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             dismissButton.widthAnchor.constraint(equalToConstant: 30),
             dismissButton.heightAnchor.constraint(equalToConstant: 30),
-            
-            scrollView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: 10),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -53,16 +49,6 @@ class ImageController: UIViewController {
         ])
         bottomBackgroundView = backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         bottomBackgroundView?.isActive = true
-        
-        
-        imageViewArray.enumerated().forEach{ index, item in
-            imageViewArray[index].heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-            imageViewArray[index].widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-            imageViewArray[index].topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-            imageViewArray[index].leadingAnchor.constraint(equalTo: index == 0 ? scrollView.leadingAnchor : imageViewArray[index - 1].trailingAnchor).isActive = true
-            
-            scrollView.contentSize = CGSize(width: (view.frame.width * CGFloat(index + 1)), height: scrollView.frame.height)
-        }
     }
     
     private func makeUI() {
@@ -70,10 +56,6 @@ class ImageController: UIViewController {
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         dismissButton.setBackgroundImage(UIImage(named: "dismiss"), for: .normal)
         dismissButton.addTarget(self, action: #selector(didTapDismiss), for: .touchUpInside)
-        
-        view.addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isPagingEnabled = true
         
         view .addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +72,28 @@ class ImageController: UIViewController {
         commentField.placeholder = "Speak out!"
         commentField.textAlignment = .left
         commentField.keyboardAppearance = .dark
+    }
+    
+    private func scrollViewSetting() {
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: 10),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -5)
+        ])
+        imageViewArray.enumerated().forEach{ index, item in
+            imageViewArray[index].heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+            imageViewArray[index].widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            imageViewArray[index].topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+            imageViewArray[index].leadingAnchor.constraint(equalTo: index == 0 ? scrollView.leadingAnchor : imageViewArray[index - 1].trailingAnchor).isActive = true
+
+            scrollView.contentSize = CGSize(width: (view.frame.width * CGFloat(index + 1)), height: scrollView.frame.height)
+        }
     }
     
     private func makeImageView(with image: UIImage) -> UIImageView {
@@ -123,7 +127,7 @@ class ImageController: UIViewController {
     }
     
     @objc private func didTapDismiss() {
-        dismiss(animated: true)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     @objc private func didTapLike() {
@@ -133,4 +137,12 @@ class ImageController: UIViewController {
     @objc private func didTapView() {
         view.endEditing(true)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print (scrollView.contentOffset)
+        if scrollView.contentOffset == CGPoint(x: scrollView.contentSize.width - view.frame.width + 3, y: 0)  {
+            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
 }
+
