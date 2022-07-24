@@ -79,6 +79,7 @@ class ImageController: UIViewController, UIScrollViewDelegate {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: 10),
@@ -139,10 +140,10 @@ class ImageController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print (scrollView.contentOffset)
         if scrollView.contentOffset == CGPoint(x: scrollView.contentSize.width - view.frame.width + 3, y: 0)  {
             scrollView.contentOffset = CGPoint(x: 0, y: 0)
         }
     }
 }
+
 
