@@ -128,7 +128,7 @@ class ImageController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func didTapDismiss() {
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapLike() {
@@ -140,10 +140,11 @@ class ImageController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset == CGPoint(x: scrollView.contentSize.width - view.frame.width + 3, y: 0)  {
+//        if scrollView.contentOffset == CGPoint(x: scrollView.contentSize.width - view.frame.width + 3, y: 0)  {
+//            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//        }
+        if scrollView.contentOffset.x >= scrollView.contentSize.width - view.frame.width + 20 {
             scrollView.contentOffset = CGPoint(x: 0, y: 0)
         }
     }
 }
-
-
