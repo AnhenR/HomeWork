@@ -16,6 +16,7 @@
 		CECDAF9A289D323B0041EF04 /* JsonStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAF99289D323B0041EF04 /* JsonStruct.swift */; };
 		CECDAF9C289D4F840041EF04 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAF9B289D4F840041EF04 /* CustomCell.swift */; };
 		CECDAF9E289D4F940041EF04 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECDAF9D289D4F940041EF04 /* CustomCell.xib */; };
+		CECDAFC228A111640041EF04 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAFC128A111640041EF04 /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CECDAF99289D323B0041EF04 /* JsonStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStruct.swift; sourceTree = "<group>"; };
 		CECDAF9B289D4F840041EF04 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		CECDAF9D289D4F940041EF04 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		CECDAFC128A111640041EF04 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				CECDAF89289D32060041EF04 /* ViewController.swift */,
 				CECDAF8B289D32060041EF04 /* Main.storyboard */,
 				CECDAF99289D323B0041EF04 /* JsonStruct.swift */,
+				CECDAFC128A111640041EF04 /* WeatherAPI.swift */,
 				CECDAF9B289D4F840041EF04 /* CustomCell.swift */,
 				CECDAF9D289D4F940041EF04 /* CustomCell.xib */,
 				CECDAF8E289D32090041EF04 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 				CECDAF8A289D32060041EF04 /* ViewController.swift in Sources */,
 				CECDAF86289D32060041EF04 /* AppDelegate.swift in Sources */,
 				CECDAF9C289D4F840041EF04 /* CustomCell.swift in Sources */,
+				CECDAFC228A111640041EF04 /* WeatherAPI.swift in Sources */,
 				CECDAF9A289D323B0041EF04 /* JsonStruct.swift in Sources */,
 				CECDAF88289D32060041EF04 /* SceneDelegate.swift in Sources */,
 			);

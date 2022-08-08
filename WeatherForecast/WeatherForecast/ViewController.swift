@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         collection.delegate = self
         setupCollection()
         collection.setCollectionViewLayout(generateLayout(), animated: true)
-        my.getWeather() { [weak self] daily in
+        my.getWeather(url:API.losAngeles) { [weak self] daily in
             self?.weather = daily
         }
     }

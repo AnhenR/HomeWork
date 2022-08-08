@@ -60,8 +60,8 @@ enum UserDefaultsKeys : String {
 
 class WeatherDecode: UIViewController {
     
-    func getWeather(completion: @escaping ((Daily) -> Void)) {
-        let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.05&longitude=-118.24&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FLos_Angeles")!
+    func getWeather(url: String, completion: @escaping ((Daily) -> Void)) {
+        guard let url = URL(string: url) else {return}
         var request = URLRequest(url: url)
         request.setValue("apllication/json", forHTTPHeaderField: "Content-type")
         URLSession.shared.dataTask(with: request) { data, _, error in
