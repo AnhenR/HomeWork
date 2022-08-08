@@ -8,7 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var losAngeles: UIButton!
+    
+    @IBOutlet weak var newYork: UIButton!
+    
+    @IBOutlet weak var berlin: UIButton!
     
     @IBOutlet weak var collection: UICollectionView!
     var weather: Daily? {
@@ -27,9 +31,6 @@ class ViewController: UIViewController {
         collection.delegate = self
         setupCollection()
         collection.setCollectionViewLayout(generateLayout(), animated: true)
-        my.getWeather(url:API.losAngeles) { [weak self] daily in
-            self?.weather = daily
-        }
     }
     
     private func setupCollection() {
@@ -54,6 +55,24 @@ class ViewController: UIViewController {
             return section
         }
     }
+    
+    @IBAction func losAngelesAction(_ sender: Any) {
+        my.getWeather(url:API.losAngeles) { [weak self] daily in
+            self?.weather = daily
+        }
+    }
+    
+    @IBAction func newYorkAction(_ sender: Any) {
+        my.getWeather(url:API.newYork) { [weak self] daily in
+            self?.weather = daily
+        }
+    }
+    
+    @IBAction func berlinAction(_ sender: Any) {
+        my.getWeather(url:API.berlin) { [weak self] daily in
+            self?.weather = daily
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -66,8 +85,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
         guard let cell = collection.dequeueReusableCell(withReuseIdentifier: CustomCell.reuseIdentifier, for: indexPath) as? CustomCell else { return UICollectionViewCell()
         }
         cell.backgroundColor = .gray
-        cell.configure(time: weather?.time[indexPath.row] ?? "n", tempMax: weather?.temperature2mMax[indexPath.row] ?? 9, tempMin: weather?.temperature2mMin[indexPath.row] ?? 9)
+        cell.configure(time: weather?.time[indexPath.row] ?? "", tempMax: weather?.temperature2mMax[indexPath.row] ?? 0, tempMin: weather?.temperature2mMin[indexPath.row] ?? 0)
         return cell
+    }
+}
+
+extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        set { layer.cornerRadius = newValue }
+        get { return layer.cornerRadius }
     }
 }
 
