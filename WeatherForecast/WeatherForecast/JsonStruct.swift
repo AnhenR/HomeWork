@@ -60,20 +60,15 @@ enum UserDefaultsKeys : String {
 
 class WeatherDecode: UIViewController {
     
-    var callBack: (([Float])-> ())?
-    
-    func getWeather() {
+    func getWeather(completion: @escaping ((Daily) -> Void)) {
         let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=34.05&longitude=-118.24&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FLos_Angeles")!
         var request = URLRequest(url: url)
         request.setValue("apllication/json", forHTTPHeaderField: "Content-type")
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let data = data {
                 do {
-                 let weather = try JSONDecoder().decode(Weather.self, from: data)
-//                    UserDefaults.standard.set(weather.daily.time, forKey: .time)
-//                    UserDefaults.standard.set(weather.daily.temperature2mMax, forKey: .tempMax)
-//                    UserDefaults.standard.set(weather.daily.temperature2mMin, forKey: .tempMin)
-                    self.callBack?(weather.daily.temperature2mMax)
+                    let weather = try JSONDecoder().decode(Weather.self, from: data)
+                    completion(weather.daily)
                 } catch {
                     print(error)
                 }
