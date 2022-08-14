@@ -91,3 +91,34 @@ extension UIColor {
         return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
     }
 }
+
+extension String {
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func localized(_ args: CVarArg...) -> String {
+        return String(format: localized, args)
+    }
+}
+
+enum L10n {
+    static let greetingFirst = "greetingFirst".localized
+    static let greetingSecond = "greetingSecond".localized
+    static let greetingThird = "greetingThird".localized
+    static let greetingFourth = "greetingFourth".localized
+    static let startButton = "startButton".localized
+    static let settingsButton = "settingsButton".localized
+    static let recordButton = "recordButton".localized
+    
+    static let levelLabel = "levelLabel".localized
+    static let nameEntry = "nameEntry".localized
+    static let easyLevel = "easyLevel".localized
+    static let hardLevel = "hardLevel".localized
+    static let alertTitle = "alertTitle".localized
+    static let alertButton = "alertButton".localized
+    
+    static let tableName = "tableName".localized
+    static let tableResult = "tableResult".localized
+}

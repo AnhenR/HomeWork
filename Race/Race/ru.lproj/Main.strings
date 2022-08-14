@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "You came to the race"; ObjectID = "CHb-48-ck1"; */
+"CHb-48-ck1.text" = "You came to the race";
+
+/* Class = "UIButton"; configuration.title = "Record table"; ObjectID = "Q6U-wS-w34"; */
+"Q6U-wS-w34.configuration.title" = "Record table";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Q6U-wS-w34"; */
+"Q6U-wS-w34.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Start game"; ObjectID = "jrl-Sz-nzV"; */
+"jrl-Sz-nzV.configuration.title" = "Start game";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jrl-Sz-nzV"; */
+"jrl-Sz-nzV.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Settings"; ObjectID = "xe8-MW-5IV"; */
+"xe8-MW-5IV.configuration.title" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xe8-MW-5IV"; */
+"xe8-MW-5IV.normalTitle" = "Button";

@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Race
+
+  Created by user on 14.08.22.
+  
+*/
+
+"greetingFirst" = "Welcome";
+"greetingSecond" = "to";
+"greetingThird" = "the";
+"greetingFourth" = "game";
+"startButton" = "Start game";
+"settingsButton" = "Settings";
+"recordButton" = "Record table";
+
+"levelLabel" = "Level selection";
+"nameEntry" = "Introduce yourself";
+"easyLevel" = "Easy level";
+"hardLevel" = "Hard level";
+"alertTitle" = "Enter your name";
+"alertButton" = "Save";
+
+"tableName" = "Name";
+"tableResult" = "Result";

@@ -70,7 +70,7 @@ extension RecordTableViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = "Name: \(nameArray[indexPath.row]), Result:  \(resultArray[indexPath.row])"
+        cell.textLabel?.text = "\(L10n.tableName): \(nameArray[indexPath.row]), \(L10n.tableResult):  \(resultArray[indexPath.row])"
         return cell
     }
 }

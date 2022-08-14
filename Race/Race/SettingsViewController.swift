@@ -57,14 +57,14 @@ class SettingsViewController: UIViewController {
         settingsLabel.translatesAutoresizingMaskIntoConstraints = false
         settingsLabel.textColor = .white
         settingsLabel.textAlignment = .center
-        settingsLabel.text = "Level selection"
+        settingsLabel.text = L10n.levelLabel
         
         view.addSubview(nameButton)
         nameButton.translatesAutoresizingMaskIntoConstraints = false
         nameButton.addShadow()
         nameButton.backgroundColor = .darkGray
         nameButton.layer.cornerRadius = 20
-        nameButton.setTitle("Introduce yourself", for: .normal)
+        nameButton.setTitle(L10n.nameEntry, for: .normal)
         nameButton.addTarget(self, action: #selector(didTapNameButton), for: .touchUpInside)
         
         view.addSubview(firstLevelButton)
@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
         firstLevelButton.addShadow()
         firstLevelButton.backgroundColor = .darkGray
         firstLevelButton.layer.cornerRadius = 20
-        firstLevelButton.setTitle("Easy level", for: .normal)
+        firstLevelButton.setTitle(L10n.easyLevel, for: .normal)
         firstLevelButton.addTarget(self, action: #selector(didTapFirstLevelButton), for: .touchUpInside)
         
         view.addSubview(secondLevelButton)
@@ -80,13 +80,13 @@ class SettingsViewController: UIViewController {
         secondLevelButton.addShadow()
         secondLevelButton.backgroundColor = .darkGray
         secondLevelButton.layer.cornerRadius = 20
-        secondLevelButton.setTitle("Hard level", for: .normal)
+        secondLevelButton.setTitle(L10n.hardLevel, for: .normal)
         secondLevelButton.addTarget(self, action: #selector(didTapSecondLevelButton), for: .touchUpInside)
     }
     
     @objc func didTapNameButton(){
-        let alertContr = UIAlertController(title: "Enter your name", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Save", style: .default) { (action) in
+        let alertContr = UIAlertController(title: L10n.alertTitle, message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: L10n.alertButton, style: .default) { (action) in
             let text = alertContr.textFields?.first?.text
         }
         

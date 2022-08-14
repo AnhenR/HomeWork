@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Race
+
+  Created by user on 14.08.22.
+  
+*/
+
+"greetingFirst" = "Добро";
+"greetingSecond" = "пожаловать";
+"greetingThird" = "в";
+"greetingFourth" = "игру";
+"startButton" = "Начать игру";
+"settingsButton" = "Настройки";
+"recordButton" = "Таблица рекордов";
+
+"levelLabel" = "Выбор уровня";
+"nameEntry" = "Введите имя";
+"easyLevel" = "Легкий уровень";
+"hardLevel" = "Сложный уровень";
+"alertTitle" = "Введите имя";
+"alertButton" = "Сохранить";
+
+"tableName" = "Имя";
+"tableResult" = "Результат";
