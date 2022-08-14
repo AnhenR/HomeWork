@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  WeatherForecast
+
+  Created by user on 13.08.22.
+  
+*/
+
+"firstCity" = "Los-Angeles";
+"secondCity" = "New-York";
+"thirdCity" = "Berlin";
+"date" = "Date";
+"maxTemp" = "Max temp";
+"minTemp" = "Min temp";

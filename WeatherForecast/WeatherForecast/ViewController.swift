@@ -9,12 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var losAngeles: UIButton!
-    
     @IBOutlet weak var newYork: UIButton!
-    
     @IBOutlet weak var berlin: UIButton!
-    
     @IBOutlet weak var collection: UICollectionView!
+    
     var weather: Daily? {
         didSet {
             DispatchQueue.main.async {[weak self] in
@@ -25,12 +23,16 @@ class ViewController: UIViewController {
     
     let my = WeatherDecode()
     
+    let newDecode = APIManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeLocalization()
         collection.dataSource = self
         collection.delegate = self
         setupCollection()
         collection.setCollectionViewLayout(generateLayout(), animated: true)
+        
     }
     
     private func setupCollection() {
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
             
             item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
             
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(220))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             
             group.contentInsets = .init(top: 10, leading: 20, bottom: 10, trailing: 20)
@@ -54,6 +56,12 @@ class ViewController: UIViewController {
             section.orthogonalScrollingBehavior = .continuous
             return section
         }
+    }
+    
+    private func makeLocalization() {
+        losAngeles.setTitle(L10n.firstCity, for: .normal)
+        newYork.setTitle(L10n.secondCity, for: .normal)
+        berlin.setTitle(L10n.thirdCity, for: .normal)
     }
     
     @IBAction func losAngelesAction(_ sender: Any) {
@@ -90,10 +98,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
     }
 }
 
-extension UIView {
-    @IBInspectable var cornerRadius: CGFloat {
-        set { layer.cornerRadius = newValue }
-        get { return layer.cornerRadius }
-    }
-}
+
+
 

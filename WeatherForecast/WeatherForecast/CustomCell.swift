@@ -22,8 +22,8 @@ class CustomCell: UICollectionViewCell {
     }
     
     func configure( time: String, tempMax: Float, tempMin: Float) {
-        dateLabel.text = "Date: \(time)"
-        tempLabel.text = "Max temp: \(tempMax)"
-        minTempLabel.text = "Min temp: \(tempMin)"
+        dateLabel.text = "\(L10n.date): \(time)"
+        tempLabel.text = "\(L10n.maxTemp) : \(tempMax)"
+        minTempLabel.text = "\(L10n.minTemp) : \(tempMin)"
     }
 }

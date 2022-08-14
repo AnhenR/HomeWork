@@ -17,10 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V7c-mv-Dp1">
-                                <rect key="frame" x="20" y="314" width="374" height="256"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V7c-mv-Dp1">
+                                <rect key="frame" x="0.0" y="294" width="414" height="230"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="nSX-Ht-aMX"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BQG-7A-vQb">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -38,10 +40,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-cm-6i1">
-                                <rect key="frame" x="27" y="133" width="114" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-cm-6i1">
+                                <rect key="frame" x="15" y="144" width="121" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5ja-z2-9lQ"/>
+                                    <constraint firstAttribute="width" constant="121" id="7r3-kr-Upp"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Los-Angeles"/>
@@ -54,10 +59,13 @@
                                     <action selector="losAngelesAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DUy-bG-f9a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-ce-rKL">
-                                <rect key="frame" x="149" y="133" width="114" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-ce-rKL">
+                                <rect key="frame" x="146" y="144" width="121" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hah-Ry-WI2"/>
+                                    <constraint firstAttribute="width" constant="121" id="s6W-bH-bwV"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="New-York"/>
@@ -70,10 +78,13 @@
                                     <action selector="newYorkAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eMY-Mc-blJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VU4-gL-ZyX">
-                                <rect key="frame" x="271" y="133" width="114" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VU4-gL-ZyX">
+                                <rect key="frame" x="277" y="144" width="125" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DXJ-at-GDk"/>
+                                    <constraint firstAttribute="width" constant="125" id="GQh-au-ZQj"/>
+                                </constraints>
                                 <color key="tintColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Berlin"/>
@@ -89,6 +100,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8Sf-cm-6i1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="0lB-hG-vZM"/>
+                            <constraint firstItem="hGX-ce-rKL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="2CP-8F-x8C"/>
+                            <constraint firstItem="V7c-mv-Dp1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6CV-84-2LW"/>
+                            <constraint firstItem="VU4-gL-ZyX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="F9r-aN-es5"/>
+                            <constraint firstItem="V7c-mv-Dp1" firstAttribute="top" secondItem="8Sf-cm-6i1" secondAttribute="bottom" constant="100" id="IS6-F5-aRU"/>
+                            <constraint firstItem="hGX-ce-rKL" firstAttribute="leading" secondItem="8Sf-cm-6i1" secondAttribute="trailing" constant="10" id="IzK-Uo-hiF"/>
+                            <constraint firstItem="VU4-gL-ZyX" firstAttribute="leading" secondItem="hGX-ce-rKL" secondAttribute="trailing" constant="10" id="eex-AQ-mD1"/>
+                            <constraint firstItem="8Sf-cm-6i1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ig5-Lg-YFa"/>
+                            <constraint firstItem="V7c-mv-Dp1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ltb-u9-De2"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="berlin" destination="VU4-gL-ZyX" id="QnI-hf-uHa"/>
