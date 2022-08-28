@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import SwiftyKeychainKit
 
 class ViewController: UIViewController {
     
     @IBOutlet var contentView: MyAlert!
+    
+    let keychain = Keychain(service: "com.arc.keychain")
+    let accessTokenKey = KeychainKey<String>(key: "accessToken")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +25,21 @@ class ViewController: UIViewController {
     }
     
     @objc private func alert() {
-        let alertController = UIAlertController(title: "Перейти к картинкам", message: "сейчас", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Перейти", style: .default) { _ in
-            guard let text = alertController.textFields else {return}
-            text[0].text == "123" ? self.next() : print("no")
+        if let token = try? keychain.get(accessTokenKey) {
+            next()
+        } else {
+            let alertController = UIAlertController(title: "Перейти к картинкам", message: "сейчас", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Перейти", style: .default) { _ in
+                guard let text = alertController.textFields else {return}
+                text[0].text == "123" ? self.next() : print("no")
+                self.addToken()
+            }
+            alertController.addTextField { (textField) in
+                textField.placeholder = "Password"
+            }
+            alertController.addAction(action)
+            present(alertController, animated: true)
         }
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Password"
-        }
-        alertController.addAction(action)
-        present(alertController, animated: true)
     }
     
     private func next() {
@@ -40,6 +49,14 @@ class ViewController: UIViewController {
         }
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true)
+    }
+    
+    private func addToken() {
+        do {
+            try keychain.set("wearstjydhgt", for: accessTokenKey)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 

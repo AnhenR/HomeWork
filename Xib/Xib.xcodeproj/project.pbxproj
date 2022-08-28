@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE96D5EE28BC232500F643B2 /* SwiftyKeychainKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE96D5ED28BC232500F643B2 /* SwiftyKeychainKit */; };
 		CEAEA78B2884BB55005F38A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA78A2884BB55005F38A7 /* AppDelegate.swift */; };
 		CEAEA78D2884BB55005F38A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA78C2884BB55005F38A7 /* SceneDelegate.swift */; };
 		CEAEA78F2884BB55005F38A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA78E2884BB55005F38A7 /* ViewController.swift */; };
@@ -17,6 +18,8 @@
 		CEAEA7A828857BC3005F38A7 /* MyAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAEA7A728857BC3005F38A7 /* MyAlert.xib */; };
 		CEAEA7AA2885A4F9005F38A7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEA7A92885A4F9005F38A7 /* ImageController.swift */; };
 		CEAEA7AC2885A522005F38A7 /* ImageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */; };
+		CECDAF56289AA34A0041EF04 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAF55289AA34A0041EF04 /* CustomCollectionCell.swift */; };
+		CECDAF58289AA3FC0041EF04 /* CustomCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECDAF57289AA3FC0041EF04 /* CustomCollectionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,8 @@
 		CEAEA7A728857BC3005F38A7 /* MyAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAlert.xib; sourceTree = "<group>"; };
 		CEAEA7A92885A4F9005F38A7 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageStoryboard.storyboard; sourceTree = "<group>"; };
+		CECDAF55289AA34A0041EF04 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		CECDAF57289AA3FC0041EF04 /* CustomCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE96D5EE28BC232500F643B2 /* SwiftyKeychainKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +77,8 @@
 				CEAEA7902884BB55005F38A7 /* Main.storyboard */,
 				CEAEA7A92885A4F9005F38A7 /* ImageController.swift */,
 				CEAEA7AB2885A522005F38A7 /* ImageStoryboard.storyboard */,
+				CECDAF55289AA34A0041EF04 /* CustomCollectionCell.swift */,
+				CECDAF57289AA3FC0041EF04 /* CustomCollectionCell.xib */,
 				CEAEA7932884BB59005F38A7 /* Assets.xcassets */,
 				CEAEA7952884BB59005F38A7 /* LaunchScreen.storyboard */,
 				CEAEA7982884BB59005F38A7 /* Info.plist */,
@@ -103,6 +111,9 @@
 			dependencies = (
 			);
 			name = Xib;
+			packageProductDependencies = (
+				CE96D5ED28BC232500F643B2 /* SwiftyKeychainKit */,
+			);
 			productName = Xib;
 			productReference = CEAEA7872884BB55005F38A7 /* Xib.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +142,9 @@
 				Base,
 			);
 			mainGroup = CEAEA77E2884BB55005F38A7;
+			packageReferences = (
+				CE96D5EC28BC232500F643B2 /* XCRemoteSwiftPackageReference "SwiftyKeychainKit" */,
+			);
 			productRefGroup = CEAEA7882884BB55005F38A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECDAF58289AA3FC0041EF04 /* CustomCollectionCell.xib in Resources */,
 				CEAEA7972884BB59005F38A7 /* LaunchScreen.storyboard in Resources */,
 				CEAEA7AC2885A522005F38A7 /* ImageStoryboard.storyboard in Resources */,
 				CEAEA7942884BB59005F38A7 /* Assets.xcassets in Resources */,
@@ -162,6 +177,7 @@
 			files = (
 				CEAEA7AA2885A4F9005F38A7 /* ImageController.swift in Sources */,
 				CEAEA78F2884BB55005F38A7 /* ViewController.swift in Sources */,
+				CECDAF56289AA34A0041EF04 /* CustomCollectionCell.swift in Sources */,
 				CEAEA78B2884BB55005F38A7 /* AppDelegate.swift in Sources */,
 				CEAEA7A42884BCFA005F38A7 /* MyAlert.swift in Sources */,
 				CEAEA78D2884BB55005F38A7 /* SceneDelegate.swift in Sources */,
@@ -384,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE96D5EC28BC232500F643B2 /* XCRemoteSwiftPackageReference "SwiftyKeychainKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/andriyslyusar/SwiftyKeychainKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = "1.0.0-beta.2";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE96D5ED28BC232500F643B2 /* SwiftyKeychainKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE96D5EC28BC232500F643B2 /* XCRemoteSwiftPackageReference "SwiftyKeychainKit" */;
+			productName = SwiftyKeychainKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEAEA77F2884BB55005F38A7 /* Project object */;
 }
