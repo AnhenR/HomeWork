@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAlert" customModule="Xib" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="9vX-Xc-rra" id="Rhc-Ny-hWm"/>
+                <outlet property="messageLabel" destination="daS-po-Qae" id="iwI-gY-kw3"/>
                 <outlet property="myButton" destination="Ni5-H1-5sq" id="Uwe-BV-vfn"/>
+                <outlet property="textField" destination="XRC-On-Eua" id="9px-vJ-3kB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,16 +33,39 @@
                         <action selector="tapButtonAction:" destination="-1" eventType="touchUpInside" id="NsF-hD-wKl"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-On-Eua">
+                    <rect key="frame" x="100" y="144" width="214" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="M36-ql-cPR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daS-po-Qae">
+                    <rect key="frame" x="100" y="194" width="214" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="VLZ-f1-NMs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="efq-J6-yMA"/>
             <color key="backgroundColor" systemColor="systemOrangeColor"/>
             <constraints>
+                <constraint firstItem="efq-J6-yMA" firstAttribute="trailing" secondItem="daS-po-Qae" secondAttribute="trailing" constant="100" id="9Fh-Rj-1ok"/>
+                <constraint firstItem="daS-po-Qae" firstAttribute="top" secondItem="XRC-On-Eua" secondAttribute="bottom" constant="10" id="AYg-t0-shh"/>
                 <constraint firstItem="efq-J6-yMA" firstAttribute="bottom" secondItem="Ni5-H1-5sq" secondAttribute="bottom" constant="100" id="BRZ-P8-oaZ"/>
+                <constraint firstItem="XRC-On-Eua" firstAttribute="top" secondItem="efq-J6-yMA" secondAttribute="top" constant="100" id="JAf-0S-WCa"/>
                 <constraint firstItem="efq-J6-yMA" firstAttribute="trailing" secondItem="Ni5-H1-5sq" secondAttribute="trailing" constant="100" id="KqM-aI-QLE"/>
+                <constraint firstItem="efq-J6-yMA" firstAttribute="trailing" secondItem="XRC-On-Eua" secondAttribute="trailing" constant="100" id="PwU-7G-gqd"/>
                 <constraint firstItem="Ni5-H1-5sq" firstAttribute="leading" secondItem="efq-J6-yMA" secondAttribute="leading" constant="100" id="XSD-JD-GBA"/>
+                <constraint firstItem="XRC-On-Eua" firstAttribute="leading" secondItem="efq-J6-yMA" secondAttribute="leading" constant="100" id="Ya0-Wk-NKL"/>
+                <constraint firstItem="daS-po-Qae" firstAttribute="leading" secondItem="efq-J6-yMA" secondAttribute="leading" constant="100" id="v5H-1U-Fp5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-259" y="-14"/>
+            <point key="canvasLocation" x="-259.4202898550725" y="-14.0625"/>
         </view>
     </objects>
     <resources>

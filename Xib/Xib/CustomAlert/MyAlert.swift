@@ -12,6 +12,8 @@ class MyAlert: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var myButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var messageLabel: UILabel!
     
     override init(frame: CGRect){
         super.init(frame: frame)
