@@ -1,0 +1,193 @@
+{
+    "name": "symfony/framework-standard-edition",
+    "license": "MIT",
+    "type": "project",
+    "description": "The \"Symfony Standard Edition\" distribution",
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        },
+        "files": [
+            "vendor/_composer_incompatible_packages/illuminate/collections/helpers.php",
+            "vendor/_composer_incompatible_packages/illuminate/events/functions.php",
+            "vendor/_composer_incompatible_packages/illuminate/support/helpers.php"
+        ],
+        "psr-4": {
+            "Brick\\Math\\": "vendor/_composer_incompatible_packages/brick/math/src",
+            "Cron\\": "vendor/_composer_incompatible_packages/dragonmantank/cron-expression/src/Cron",
+            "Illuminate\\Bus\\": "vendor/_composer_incompatible_packages/illuminate/bus",
+            "Illuminate\\Cache\\": "vendor/_composer_incompatible_packages/illuminate/cache",
+            "Illuminate\\Container\\": "vendor/_composer_incompatible_packages/illuminate/container",
+            "Illuminate\\Contracts\\": "vendor/_composer_incompatible_packages/illuminate/contracts",
+            "Illuminate\\Console\\": [
+                "src/Illuminate/BridgeBundle/Backports/Console",
+                "vendor/_composer_incompatible_packages/illuminate/console"
+            ],
+            "Illuminate\\Console\\Scheduling\\": [
+                "src/Illuminate/BridgeBundle/Backports/Console/Scheduling",
+                "vendor/_composer_incompatible_packages/illuminate/console/Scheduling"
+            ],
+            "Illuminate\\Events\\": "vendor/_composer_incompatible_packages/illuminate/events",
+            "Illuminate\\Database\\": "vendor/_composer_incompatible_packages/illuminate/database",
+            "Illuminate\\Foundation\\": "vendor/_composer_incompatible_packages/laravel-zero/foundation/src/Illuminate/Foundation",
+            "Illuminate\\Pipeline\\": "vendor/_composer_incompatible_packages/illuminate/pipeline",
+            "Illuminate\\Queue\\": "vendor/_composer_incompatible_packages/illuminate/queue",
+            "Illuminate\\Redis\\":  "vendor/_composer_incompatible_packages/illuminate/redis",
+            "Illuminate\\Support\\": [
+                "vendor/_composer_incompatible_packages/illuminate/collections",
+                "vendor/_composer_incompatible_packages/illuminate/support"
+            ],
+            "Illuminate\\Support\\Traits\\": [
+                "src/Illuminate/BridgeBundle/Collections/traits",
+                "vendor/_composer_incompatible_packages/illuminate/macroable/Traits"
+            ],
+            "Psr\\Container\\": "vendor/_composer_incompatible_packages/psr/container/src",
+            "Ramsey\\Collection\\": "vendor/_composer_incompatible_packages/ramsey/collection/src",
+            "Ramsey\\Uuid\\": "vendor/_composer_incompatible_packages/ramsey/uuid/src"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-zend-opcache": "*",
+        "ext-zip": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-redis": "*",
+        "ext-openssl": "*",
+        "ext-pcntl": "*",
+        "symfony/symfony": "~2.6.0",
+        "symfony/assetic-bundle": "dev-master",
+        "symfony/process": "2.6.*",
+        "symfony/monolog-bundle": "~2.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/polyfill-php73": "^1.25",
+        "symfony/polyfill-php74": "^1.25",
+        "symfony/polyfill-php80": "^1.25",
+        "symfony/polyfill-php81": "^1.25",
+        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "doctrine/lexer": "1.0.*",
+        "doctrine/migrations": "^1.5",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "twig/extensions": "~1.0",
+        "sensio/distribution-bundle": "~3.0",
+        "sensio/framework-extra-bundle": "~3.0",
+        "sensio/generator-bundle": "~2.3",
+        "incenteev/composer-parameter-handler": "^2.1",
+        "jms/di-extra-bundle": ">=1.4.0",
+        "avalanche123/imagine-bundle": "v2.1.2",
+        "gargron/fileupload": "1.0.1",
+        "friendsofsymfony/jsrouting-bundle": "1.6.0",
+        "friendsofsymfony/rest-bundle": "0.13@dev",
+        "friendsofsymfony/user-bundle": "v2.0.0-alpha3",
+        "jms/serializer-bundle": "0.13.*@dev",
+        "gedmo/doctrine-extensions": "2.3.*@dev",
+        "stof/doctrine-extensions-bundle": "1.1.*@dev",
+        "knplabs/knp-paginator-bundle": "2.5.*",
+        "knplabs/knp-menu": "2.0.*@dev",
+        "knplabs/knp-menu-bundle": "2.0.*@dev",
+        "knplabs/knp-snappy-bundle": "^1.4",
+        "knplabs/knp-gaufrette-bundle": "*@dev",
+        "lrotherfield/form": "1.1.*",
+        "stfalcon/tinymce-bundle": "1.*",
+        "liip/functional-test-bundle": "1.2.2",
+        "jms/security-extra-bundle": "dev-master",
+        "candy-chat/xmpp-prebind-php": "1.*",
+        "egeloen/ckeditor-bundle": "~2.0",
+        "helios-ag/fm-elfinder-bundle": "1.*",
+        "cboden/ratchet": "v0.4.4",
+        "oro/doctrine-extensions": "dev-master",
+        "react/zmq": "0.3",
+        "ocramius/proxy-manager": "^1.0",
+        "guzzlehttp/guzzle": "~6.0",
+        "mockery/mockery": "^0.9.4",
+        "guzzle/guzzle": "^3.9",
+        "willdurand/js-translation-bundle": "2.6.1",
+        "robertotru/to-inline-style-email-bundle": "1.2",
+        "cmfcmf/openweathermap-php-api": "2.*",
+        "kachkaev/assets-version-bundle": "^2.0",
+        "beberlei/doctrineextensions": "^1.0",
+        "box/spout": "2.*",
+        "snc/redis-bundle": "1.*",
+        "predis/predis": "^1.0",
+        "phpseclib/phpseclib": "^2.0",
+        "psr/log": "^1.1.4",
+        "johngrogg/ics-parser": "^2.0",
+        "urbanplum/bmp": "^1.0",
+        "voryx/thruway": "0.6.1",
+        "rguedes/pdfmerger": "^1.0",
+        "thruway/pawl-transport": "^0.5.2",
+        "php-amqplib/php-amqplib": "^3.2",
+        "nesbot/carbon": "^1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0",
+        "behat/behat": "~3.0",
+        "behat/symfony2-extension": "~2.0",
+        "behat/mink": "~1.5",
+        "behat/mink-extension": "~2.0",
+        "behat/mink-browserkit-driver": "~1.1",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "phpunit/phpunit": "^8"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "version": "1.0",
+                "name": "candy-chat/xmpp-prebind-php",
+                "source": {
+                    "url": "https://github.com/candy-chat/xmpp-prebind-php.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "dist": {
+                    "url": "https://github.com/candy-chat/xmpp-prebind-php/archive/master.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "scripts": {
+        "build-parameters": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "composer-static-install": [
+            "@putenv COMPOSER=composer_static.json",
+            "$PHP_BINARY --version",
+            "$PHP_BINARY ./composer.phar install --ignore-platform-reqs"
+        ],
+        "pre-autoload-dump": [
+            "@composer-static-install"
+        ],
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "raulfraile/ladybug-installer": false,
+            "kylekatarnls/update-helper": false
+        }
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "2.4-dev"
+        }
+    }
+}
+
