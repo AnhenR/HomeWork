@@ -9,7 +9,7 @@ import Foundation
 
 class Bindable<Value> {
     private var observations = [(Value) -> Bool]()
-    private var lastValue: Value?
+    var lastValue: Value?
     
     init(_ value: Value? = nil) {
         lastValue = value

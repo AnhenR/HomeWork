@@ -93,7 +93,11 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModelWeather.weatherStruct?.time.count ?? 7
+        if let count = viewModelWeather.bindWeather.lastValue?.time.count {
+            return count
+        }
+          return 7
+//        return viewModelWeather.weatherStruct?.time.count ?? 7
 //        weather?.time.count ?? 7
     }
     
@@ -103,12 +107,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
         cell.backgroundColor = .gray
 //    было
 //        cell.configure(tempMax: weather?.temperature2mMax[indexPath.row] ?? 0, tempMin: weather?.temperature2mMin[indexPath.row] ?? 0)
-        viewModelWeather.bindWeather.bind(\.time[indexPath.row], to: cell.dateLabel, \.text)
+        viewModelWeather.bindWeather.bind(\.time[indexPath.row], to: cell.dateLabel, \.text) { value in
+            return "\(L10n.date): \(value)"
+        }
         viewModelWeather.bindWeather.bind(\.temperature2mMax[indexPath.row], to: cell.tempLabel, \.text) { value in
-            return "\(value)"
+            return "\(L10n.maxTemp): \(value)"
         }
         viewModelWeather.bindWeather.bind(\.temperature2mMin[indexPath.row], to: cell.minTempLabel, \.text) { value in
-            return "\(value)"
+            return "\(L10n.minTemp): \(value)"
         }
         return cell
     }
