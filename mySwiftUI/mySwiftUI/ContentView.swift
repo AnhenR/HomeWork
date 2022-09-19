@@ -14,7 +14,7 @@ struct Name: Identifiable {
 
 struct ContentView: View {
     
-    let list: [Name] = [.init(name: "   Море    волнуется"), .init(name: ".море волнуется"), .init(name: "море   волнуется. раз"), .init(name: "море   волнуется  .  раз. два")]
+    let list: [Name] = [.init(name: "   море волнуется"), .init(name: ".море   во лну    ется"), .init(name: "море   волнуется. раз"), .init(name: "море   волнуется  .  раз. два")]
     
     @State private var isFavorete: Bool = false
     

@@ -14,9 +14,9 @@ struct Trimmed {
     
     var wrappedValue: String {
         get { return value}
-        set {value = removeExtraSpaces(newValue: newValue)}
+        set { value = removeExtraSpaces(newValue: newValue) }
     }
-
+    
     init(initialValue: String) {
         self.wrappedValue = initialValue
     }
@@ -24,17 +24,17 @@ struct Trimmed {
     mutating func removeExtraSpaces(newValue: String) -> String {
         var data  = ""
         var numberOfSpace = 0
-
+        
         newValue.forEach{ item in
-        if item == " " {
-            numberOfSpace = numberOfSpace + 1
-        }else {
-            numberOfSpace = 0
+            if item == " " {
+                numberOfSpace = numberOfSpace + 1
+            }else {
+                numberOfSpace = 0
+            }
+            if numberOfSpace == 1 || numberOfSpace == 0 {
+                data.append(item)
+            }
         }
-        if numberOfSpace == 1 || numberOfSpace == 0 {
-            data.append(item)
-        }
-    }
         let newData = data.trimmingCharacters(in: .whitespacesAndNewlines)
         return newData
     }
@@ -57,11 +57,8 @@ struct Сapital {
     mutating func uppercaseLetters(newValue: String) -> String {
         var data  = ""
         var dot = 0
-        
         newValue.enumerated().forEach{ index, item in
-            if index == 0 && item != " " && item != "." {
-                data.append(item.uppercased())
-            } else if item == "." {
+            if item == "." {
                 dot += 1
                 data.append(item)
             } else if dot == 1 && item != " " {
@@ -71,7 +68,10 @@ struct Сapital {
                 data.append(item)
             }
         }
-        return data
+        var dataSpaces = data.trimmingCharacters(in: .whitespacesAndNewlines)
+        var dataUp = dataSpaces.first!.uppercased()
+        var dataDrop = dataSpaces.dropFirst()
+        return dataUp + dataDrop
     }
 }
 
