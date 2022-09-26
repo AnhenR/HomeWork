@@ -73,31 +73,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CE96D5F128C3AE9100F643B2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				CE96D5F228C3AEBB00F643B2 /* Bindable.swift */,
-				CE96D5EF28C3A8BC00F643B2 /* ViewModelWeather.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CE96D5F528C3AED900F643B2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CECDAFC128A111640041EF04 /* WeatherAPI.swift */,
-				CECDAF99289D323B0041EF04 /* JsonStruct.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE96D5F628C3AF0700F643B2 /* ViewControllers */ = {
+		CE91F1C128E1BCAC0001F3A5 /* WeatherViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CECDAF89289D32060041EF04 /* ViewController.swift */,
 				CECDAF8B289D32060041EF04 /* Main.storyboard */,
 				CECDAF9B289D4F840041EF04 /* CustomCell.swift */,
 				CECDAF9D289D4F940041EF04 /* CustomCell.xib */,
+			);
+			path = WeatherViewController;
+			sourceTree = "<group>";
+		};
+		CE96D5F128C3AE9100F643B2 /* WeatherViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D5F228C3AEBB00F643B2 /* Bindable.swift */,
+				CE96D5EF28C3A8BC00F643B2 /* ViewModelWeather.swift */,
+			);
+			path = WeatherViewModel;
+			sourceTree = "<group>";
+		};
+		CE96D5F528C3AED900F643B2 /* WeatherModel */ = {
+			isa = PBXGroup;
+			children = (
+				CECDAFC128A111640041EF04 /* WeatherAPI.swift */,
+				CECDAF99289D323B0041EF04 /* JsonStruct.swift */,
+			);
+			path = WeatherModel;
+			sourceTree = "<group>";
+		};
+		CE96D5F628C3AF0700F643B2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE96D5F528C3AED900F643B2 /* WeatherModel */,
+				CE96D5F128C3AE9100F643B2 /* WeatherViewModel */,
+				CE91F1C128E1BCAC0001F3A5 /* WeatherViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -127,8 +137,6 @@
 				CECDAF87289D32060041EF04 /* SceneDelegate.swift */,
 				CE39611B28A9639000A9B156 /* UsefulExtension.swift */,
 				CE96D5F628C3AF0700F643B2 /* ViewControllers */,
-				CE96D5F128C3AE9100F643B2 /* ViewModel */,
-				CE96D5F528C3AED900F643B2 /* Model */,
 				CECDAF8E289D32090041EF04 /* Assets.xcassets */,
 				CE96D5EA28B7BB5000F643B2 /* GoogleService-Info.plist */,
 				CECDAF90289D32090041EF04 /* LaunchScreen.storyboard */,

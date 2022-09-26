@@ -14,10 +14,23 @@ class ViewModelWeather: UIViewController {
     var bindWeather: Bindable<Daily> = Bindable()
     let networkModel = WeatherDecode()
     
+    let networkAPI = APIManager()
+    
     func loadDataLosAngeles() {
-        networkModel.getWeather(url: API.losAngeles) { [weak bindWeather] daily in
-            bindWeather?.update(with: daily)
+        NetworkService.request(router: WeatherRouter.getWeather(latitude: 34.05, longitude: -118.24, timeZone: "America Los_Angeles", daily:["temperature_2m_max","temperature_2m_min"] )) { (result: Result<Daily, Error>) in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
+            }
         }
+        
+//        networkModel.getWeather(url: API.losAngeles) { [weak bindWeather] daily in
+//            bindWeather?.update(with: daily)
+//        }
+        
+        
     }
     
     func loadDataBerlin() {

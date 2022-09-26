@@ -25,8 +25,6 @@ class ViewController: UIViewController {
 //    }
 //    let my = WeatherDecode()
     
-//    let newDecode = APIManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeLocalization()
@@ -97,8 +95,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
             return count
         }
           return 7
-//        return viewModelWeather.weatherStruct?.time.count ?? 7
-//        weather?.time.count ?? 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

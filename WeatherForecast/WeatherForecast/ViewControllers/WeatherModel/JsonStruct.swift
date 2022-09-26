@@ -104,7 +104,7 @@ class NetworkService {
 
 enum WeatherRouter: NetworkRouterProtocol {
     
-    case getWeather(latitude: Double, longitude: Double)
+    case getWeather(latitude: Double, longitude: Double, timeZone: String = "America Los_Angeles", daily: [String] = ["temperature_2m_max","temperature_2m_min"])
     
     var scheme: String {
         return "https"
@@ -127,12 +127,12 @@ enum WeatherRouter: NetworkRouterProtocol {
     
     var parameters: [URLQueryItem] {
         switch self {
-        case .getWeather(let latitude, let longitude):
+        case .getWeather(let latitude, let longitude, let timeZone, let daily):
             return [
                 URLQueryItem(name: "latitude", value: "\(latitude)"),
                 URLQueryItem(name: "longitude", value: "\(longitude)"),
-                URLQueryItem(name: "timezone", value: "America Los_Angeles"),
-                URLQueryItem(name: "daily", value: "temperature_2m_max,temperature_2m_min")
+                URLQueryItem(name: "timezone", value: timeZone),
+                URLQueryItem(name: "daily", value: daily.joined(separator: ","))
             ]
         }
     }
