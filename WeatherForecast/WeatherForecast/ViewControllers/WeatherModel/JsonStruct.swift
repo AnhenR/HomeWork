@@ -8,6 +8,50 @@
 import Foundation
 import UIKit
 
+//struct Weather: Decodable {
+//    let latitude: Double
+//    let longitude: Double
+//    let generationtimeMs: Double
+//    let utcOffsetSeconds: Int
+//    let timezone: String
+//    let timezoneAbbreviation: String
+//    let elevation: Double
+//    let dailyUnits: DailyUnits
+//    let daily: Daily
+//
+//    enum CodingKeys: String, CodingKey {
+//        case latitude, longitude, elevation, timezone, daily
+//        case generationtimeMs = "generationtime_ms"
+//        case utcOffsetSeconds = "utc_offset_seconds"
+//        case timezoneAbbreviation = "timezone_abbreviation"
+//        case dailyUnits = "daily_units"
+//    }
+//}
+//
+//struct DailyUnits: Decodable {
+//    let time: String
+//    let temperature2mMax: String
+//    let temperature2mMin: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case time
+//        case temperature2mMax = "temperature_2m_max"
+//        case temperature2mMin = "temperature_2m_min"
+//    }
+//}
+//
+//struct Daily: Decodable {
+//    let time: [String]
+//    let temperature2mMax: [Float]
+//    let temperature2mMin: [Float]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case time
+//        case temperature2mMax = "temperature_2m_max"
+//        case temperature2mMin = "temperature_2m_min"
+//    }
+//}
+
 struct Weather: Decodable {
     let latitude: Double
     let longitude: Double
@@ -16,15 +60,52 @@ struct Weather: Decodable {
     let timezone: String
     let timezoneAbbreviation: String
     let elevation: Double
+    let hourlyUnits: HourlyUnits
+    let hourly: Hourly
     let dailyUnits: DailyUnits
     let daily: Daily
-    
+
     enum CodingKeys: String, CodingKey {
-        case latitude, longitude, elevation, timezone, daily
+        case latitude, longitude, elevation, timezone,hourly, daily
         case generationtimeMs = "generationtime_ms"
         case utcOffsetSeconds = "utc_offset_seconds"
         case timezoneAbbreviation = "timezone_abbreviation"
+        case hourlyUnits = "hourly_units"
         case dailyUnits = "daily_units"
+    }
+}
+
+struct HourlyUnits: Decodable {
+    let time: String
+    let temperature2m: String
+    let apparentTemperature: String
+    let rain: String
+    let snowfall: String
+    let cloudcover: String
+    let windspeed10m: String
+
+    enum CodingKeys: String, CodingKey {
+        case time, rain, snowfall, cloudcover
+        case temperature2m = "temperature_2m"
+        case apparentTemperature = "apparent_temperature"
+        case windspeed10m = "windspeed_10m"
+    }
+}
+
+struct Hourly: Decodable {
+    let time: [String]
+    let temperature2m: [Float]
+    let apparentTemperature: [Float]
+    let rain: [Float]
+    let snowfall: [Float]
+    let cloudcover: [Int]
+    let windspeed10m: [Float]
+
+    enum CodingKeys: String, CodingKey {
+        case time, rain, snowfall, cloudcover
+        case temperature2m = "temperature_2m"
+        case apparentTemperature = "apparent_temperature"
+        case windspeed10m = "windspeed_10m"
     }
 }
 
@@ -32,11 +113,15 @@ struct DailyUnits: Decodable {
     let time: String
     let temperature2mMax: String
     let temperature2mMin: String
-    
+    let precipitationSum: String
+    let precipitationHours: String
+
     enum CodingKeys: String, CodingKey {
         case time
         case temperature2mMax = "temperature_2m_max"
         case temperature2mMin = "temperature_2m_min"
+        case precipitationSum = "precipitation_sum"
+        case precipitationHours = "precipitation_hours"
     }
 }
 
@@ -44,13 +129,18 @@ struct Daily: Decodable {
     let time: [String]
     let temperature2mMax: [Float]
     let temperature2mMin: [Float]
-    
+    let precipitationSum: [Float]
+    let precipitationHours: [Int]
+
     enum CodingKeys: String, CodingKey {
         case time
         case temperature2mMax = "temperature_2m_max"
         case temperature2mMin = "temperature_2m_min"
+        case precipitationSum = "precipitation_sum"
+        case precipitationHours = "precipitation_hours"
     }
 }
+
 
 protocol NetworkRouterProtocol {
     var scheme: String { get }
@@ -169,7 +259,7 @@ class APIManager {
 
 class WeatherDecode {
     
-    func getWeather(url: String, completion: @escaping ((Daily) -> Void)) {
+    func getWeather(url: String, completion: @escaping ((Hourly) -> Void)) {
         guard let url = URL(string: url) else {return}
         var request = URLRequest(url: url)
         request.setValue("apllication/json", forHTTPHeaderField: "Content-type")
@@ -177,7 +267,7 @@ class WeatherDecode {
             if let data = data {
                 do {
                     let weather = try JSONDecoder().decode(Weather.self, from: data)
-                    completion(weather.daily)
+                    completion(weather.hourly)
                 } catch {
                     print(error)
                 }

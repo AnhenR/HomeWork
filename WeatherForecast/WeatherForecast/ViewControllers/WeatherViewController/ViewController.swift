@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var losAngeles: UIButton!
@@ -14,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     
     let viewModelWeather = ViewModelWeather()
+    
+    private var looper: AVPlayerLooper?
     
 //  было
 //    var weather: Daily? {
@@ -28,10 +31,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeLocalization()
+        backgroundVideo()
         collection.dataSource = self
         collection.delegate = self
         setupCollection()
         collection.setCollectionViewLayout(generateLayout(), animated: true)
+        view.bringSubviewToFront(collection)
+        view.bringSubviewToFront(losAngeles)
+        view.bringSubviewToFront(newYork)
+        view.bringSubviewToFront(berlin)
+        
     }
     
     private func setupCollection() {
@@ -63,12 +72,29 @@ class ViewController: UIViewController {
         berlin.setTitle(L10n.thirdCity, for: .normal)
     }
     
+    private func backgroundVideo() {
+            guard let videoURL = Bundle.main.path(forResource: "myVideo", ofType: "mp4") else { return }
+            let url = URL(fileURLWithPath: videoURL)
+            do {
+                let item = AVPlayerItem(url: url)
+                let player = AVQueuePlayer(items: [item])
+                looper = AVPlayerLooper(player: player, templateItem: item)
+                let playerLayer = AVPlayerLayer(player: player)
+                playerLayer.frame = view.bounds
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                view.layer.addSublayer(playerLayer)
+                player.play()
+            }
+    }
+    
+    
     @IBAction func losAngelesAction(_ sender: Any) {
 // было
 //        my.getWeather(url:API.losAngeles) { [weak self] daily in
 //            self?.weather = daily
 //        }
-        viewModelWeather.loadDataLosAngeles()
+        
+//        viewModelWeather.loadDataLosAngeles(latitude: 40.71, longitude: -74.01, timeZone: "America%2FNew_York", daily:["temperature_2m_max","temperature_2m_min"])
     }
     
     @IBAction func newYorkAction(_ sender: Any) {
@@ -94,7 +120,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
         if let count = viewModelWeather.bindWeather.lastValue?.time.count {
             return count
         }
-          return 7
+          return 167
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,10 +132,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
         viewModelWeather.bindWeather.bind(\.time[indexPath.row], to: cell.dateLabel, \.text) { value in
             return "\(L10n.date): \(value)"
         }
-        viewModelWeather.bindWeather.bind(\.temperature2mMax[indexPath.row], to: cell.tempLabel, \.text) { value in
+        viewModelWeather.bindWeather.bind(\.temperature2m[indexPath.row], to: cell.tempLabel, \.text) { value in
             return "\(L10n.maxTemp): \(value)"
         }
-        viewModelWeather.bindWeather.bind(\.temperature2mMin[indexPath.row], to: cell.minTempLabel, \.text) { value in
+        viewModelWeather.bindWeather.bind(\.apparentTemperature[indexPath.row], to: cell.minTempLabel, \.text) { value in
             return "\(L10n.minTemp): \(value)"
         }
         return cell
