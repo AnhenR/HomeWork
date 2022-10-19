@@ -8,9 +8,21 @@
 import Foundation
 import UIKit
 
-class PlacesViewModel: UIViewController {
-    //тут будут массивы названий и секций для вью, ток я не уверена мб надо сделать структуру
-    override func viewDidLoad() {
-        super.viewDidLoad()
+struct Places {
+    enum TypePlaces: String{
+        case castle = "Замкі"
+        case nature = "Прырода"
+        case church = "Царквы"
     }
+    var type: TypePlaces
+    var description: [String]
+}
+
+
+class PlacesViewModel {
+    
+    var placesArray = [Places(type: .castle, description: ["Нясвіжскі замак", "замак у Марачоўшчыне", "Мірскі замак", "Лідскі замак"]),
+                       Places(type: .nature, description: ["тэрыконы", "крэйдавыя кар'еры", "возера Белае і Нарач"]),
+                       Places(type: .church, description: ["царква ў Сар'і", "касцёл у Гервятах", "храм у Чачэрску"])]
+    
 }

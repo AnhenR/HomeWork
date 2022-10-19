@@ -11,12 +11,10 @@ class ViewController: UIViewController {
     
     private let mainLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Некалькі выдатных мясцін Беларусі, якія варта наведаць!"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.addShadow()
         return label
     }()
     
@@ -24,8 +22,7 @@ class ViewController: UIViewController {
         let image = UIImageView()
         image.image = UIImage(named: "cornflowers")
         image.contentMode = .scaleToFill
-        image.alpha = 0.9
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -33,10 +30,7 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Азнаёміцца", for: .normal)
         button.backgroundColor = .darkGray
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 30
-        button.alpha = 0.9
-        button.addShadow()
         return button
     }()
 
@@ -48,8 +42,12 @@ class ViewController: UIViewController {
     private func configureUI() {
         navigationItem.backButtonTitle = "Выйсці"
         view.addSubview(mainImage)
-        view.addSubview(mainLabel)
-        view.addSubview(cityButton)
+        view.translatesAutoresizingMaskIntoSubviews()
+        view.addAlpha()
+        mainImage.addSubviews(mainLabel, cityButton)
+        mainImage.translatesAutoresizingMaskIntoSubviews()
+        mainImage.addShadowOnSubviews()
+        mainImage.addAlpha()
         NSLayoutConstraint.activate([
             mainImage.topAnchor.constraint(equalTo: view.topAnchor),
             mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -67,8 +65,6 @@ class ViewController: UIViewController {
             cityButton.heightAnchor.constraint(equalToConstant: 60)
         ])
         cityButton.addTarget(self, action: #selector(didTap), for: .touchUpInside)
-        view.bringSubviewToFront(cityButton)
-        view.bringSubviewToFront(mainLabel)
     }
     
     @objc func didTap() {

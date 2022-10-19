@@ -16,4 +16,31 @@ extension UIView {
         layer.shadowOpacity = shadowOpacity
         layer.shadowRadius = shadowRadius
     }
+    
+    func addGradient(colors:[Any] = [UIColor.white.cgColor,UIColor.gray.cgColor, UIColor.darkGray.cgColor], startPoint: CGPoint = CGPoint.Point.topLeading.point , endPoint: CGPoint = CGPoint.Point.bottomTrailing.point, type: CAGradientLayerType = .axial ) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        gradientLayer.type = type
+        gradientLayer.cornerRadius = layer.cornerRadius
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func addShadowOnSubviews() {
+        subviews.forEach{$0.addShadow()}
+    }
+    
+    func addAlpha() {
+        subviews.forEach{$0.alpha = 0.9}
+    }
+    
+    func addSubviews(_ views: UIView...) {
+        views.forEach{ addSubview($0)}
+    }
+    
+    func translatesAutoresizingMaskIntoSubviews() {
+        subviews.forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+    }
 }

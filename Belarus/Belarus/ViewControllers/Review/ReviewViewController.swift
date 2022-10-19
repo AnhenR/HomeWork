@@ -10,20 +10,29 @@ import UIKit
 
 class ReviewViewController: UIViewController, UIScrollViewDelegate {
     
-    private var imageArray = [UIImage(named: "chechersk1"), UIImage(named: "chechersk2"), UIImage(named: "chechersk3"), UIImage(named: "chechersk4")]
+    let viewModel: ReviewViewModel
+    
+    init(viewModel:ReviewViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let mainImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "cornflowers3")
         image.contentMode = .scaleToFill
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!"
+        label.text = "Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -33,29 +42,23 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     
     private let weatherButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Надвор'е", for: .normal)
         button.backgroundColor = .gray
         button.layer.cornerRadius = 20
-        button.alpha = 0.9
-        button.addShadow()
+        button.addTarget(self, action: #selector(didTapWeather), for: .touchUpInside)
         return button
     }()
     
     private let mapButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Карта", for: .normal)
         button.backgroundColor = .brown
         button.layer.cornerRadius = 20
-        button.alpha = 0.9
-        button.addShadow()
         return button
     }()
     
     private var scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.backgroundColor = .clear
         return scroll
     }()
@@ -64,19 +67,12 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let a = descriptionLabel.getSize(constrainedWidth: scrollView.frame.width)
-        print(a.width, "nnnnn", a.height)
         configureUI()
         setupScroll()
         setupCollection()
         placesCollection.delegate = self
         placesCollection.dataSource = self
         placesCollection.register(CustomCell.self, forCellWithReuseIdentifier: "Cell")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: descriptionLabel.getSize(constrainedWidth: view.frame.width).height)
     }
     
     private func setupCollection() {
@@ -87,7 +83,7 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
         placesCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         placesCollection.backgroundColor = .clear
         placesCollection.isPagingEnabled = true
-        view.addSubview(placesCollection)
+        mainImage.addSubview(placesCollection)
         placesCollection.translatesAutoresizingMaskIntoConstraints = false
         placesCollection.heightAnchor.constraint(equalToConstant: 300).isActive = true
         placesCollection.leadingAnchor.constraint(equalTo: mainImage.leadingAnchor).isActive = true
@@ -96,7 +92,8 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setupScroll() {
-        view.addSubview(scrollView)
+        mainImage.addSubview(scrollView)
+        mainImage.translatesAutoresizingMaskIntoSubviews()
         scrollView.delegate = self
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -105,27 +102,30 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
         ])
         
-//        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: descriptionLabel.getSize(constrainedWidth: scrollView.frame.width).width)
         scrollView.addSubview(descriptionLabel)
-        view.bringSubviewToFront(scrollView)
+        scrollView.addShadowOnSubviews()
+        NSLayoutConstraint.activate([
+            descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
+        ])
     }
     
     private func configureUI() {
+        navigationItem.backButtonTitle = "Выйсці"
         view.addSubview(mainImage)
-//        mainImage.addSubview(descriptionLabel)
-        view.addSubview(weatherButton)
-        view.addSubview(mapButton)
+        view.translatesAutoresizingMaskIntoSubviews()
+        mainImage.addSubviews(weatherButton, mapButton)
+        mainImage.translatesAutoresizingMaskIntoSubviews()
+        mainImage.addAlpha()
+        mainImage.addShadowOnSubviews()
         NSLayoutConstraint.activate([
             mainImage.topAnchor.constraint(equalTo: view.topAnchor),
             mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-//            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            descriptionLabel.leadingAnchor.constraint(equalTo: mainImage.leadingAnchor),
-//            descriptionLabel.trailingAnchor.constraint(equalTo: mainImage.trailingAnchor),
-//            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
-
+                
             weatherButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             weatherButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             weatherButton.widthAnchor.constraint(equalToConstant: 100),
@@ -136,26 +136,23 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
             mapButton.widthAnchor.constraint(equalToConstant: 100),
             mapButton.heightAnchor.constraint(equalToConstant: 40)
         ])
-        view.bringSubviewToFront(weatherButton)
-        view.bringSubviewToFront(mapButton)
+    }
+    
+    @objc private func didTapWeather() {
+        navigationController?.pushViewController(WeatherViewController(), animated: true)
     }
 }
+
 extension ReviewViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
+        return viewModel.review.imagePlace.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CustomCell
-        cell.configure(newImage: imageArray[indexPath.row]!)
+        cell.configure(newImage: viewModel.review.imagePlace[indexPath.row])
         return cell
-    }
-}
-
-extension UILabel {
-    func getSize(constrainedWidth: CGFloat) -> CGSize {
-        return systemLayoutSizeFitting(CGSize(width: constrainedWidth, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
     }
 }
 

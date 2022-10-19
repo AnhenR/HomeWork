@@ -20,6 +20,9 @@
 		CE2F718F28FDBAD400481299 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F718E28FDBAD400481299 /* ReviewViewController.swift */; };
 		CE6C8BD328FF13A40008E452 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C8BD228FF13A40008E452 /* CustomCell.swift */; };
 		CE6C8BDD290031370008E452 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C8BDC290031370008E452 /* ReviewViewModel.swift */; };
+		CE6C8BE229006E570008E452 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C8BE129006E570008E452 /* WeatherModel.swift */; };
+		CE6C8BE429006E6A0008E452 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C8BE329006E6A0008E452 /* WeatherViewModel.swift */; };
+		CE6C8BE6290095960008E452 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C8BE5290095960008E452 /* CGPointExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		CE2F718E28FDBAD400481299 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		CE6C8BD228FF13A40008E452 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		CE6C8BDC290031370008E452 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		CE6C8BE129006E570008E452 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		CE6C8BE329006E6A0008E452 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		CE6C8BE5290095960008E452 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				CE2F718928FCA51400481299 /* ViewExtension.swift */,
+				CE6C8BE5290095960008E452 /* CGPointExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -114,8 +121,8 @@
 		CE6C8BDE290031450008E452 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				CE2F718528F871B300481299 /* PlacesViewController.swift */,
 				CE2F718C28FDBA3B00481299 /* PlacesViewModel.swift */,
+				CE2F718528F871B300481299 /* PlacesViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -123,6 +130,8 @@
 		CE6C8BE0290031700008E452 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				CE6C8BE129006E570008E452 /* WeatherModel.swift */,
+				CE6C8BE329006E6A0008E452 /* WeatherViewModel.swift */,
 				CE2F718728F8720200481299 /* WeatherViewController.swift */,
 			);
 			path = Weather;
@@ -200,15 +209,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE2F718A28FCA51400481299 /* ViewExtension.swift in Sources */,
+				CE6C8BE429006E6A0008E452 /* WeatherViewModel.swift in Sources */,
 				CE2F718628F871B300481299 /* PlacesViewController.swift in Sources */,
 				CE2F718828F8720200481299 /* WeatherViewController.swift in Sources */,
 				CE2F717528F8591400481299 /* ViewController.swift in Sources */,
 				CE6C8BDD290031370008E452 /* ReviewViewModel.swift in Sources */,
 				CE6C8BD328FF13A40008E452 /* CustomCell.swift in Sources */,
 				CE2F718D28FDBA3B00481299 /* PlacesViewModel.swift in Sources */,
+				CE6C8BE6290095960008E452 /* CGPointExtension.swift in Sources */,
 				CE2F717128F8591400481299 /* AppDelegate.swift in Sources */,
 				CE2F718F28FDBAD400481299 /* ReviewViewController.swift in Sources */,
 				CE2F717328F8591400481299 /* SceneDelegate.swift in Sources */,
+				CE6C8BE229006E570008E452 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
