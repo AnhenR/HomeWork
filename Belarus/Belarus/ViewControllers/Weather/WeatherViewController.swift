@@ -7,29 +7,29 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class WeatherViewController: UIViewController {
     
-    private let mainImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "cornflowers4")
-        image.contentMode = .scaleToFill
-        return image
-    }()
+    private var looper: AVPlayerLooper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        backgroundVideo()
     }
     
-    private func configureUI() {
-        view.addSubview(mainImage)
-        view.translatesAutoresizingMaskIntoSubviews()
-        NSLayoutConstraint.activate([
-            mainImage.topAnchor.constraint(equalTo: view.topAnchor),
-            mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+    private func backgroundVideo() {
+        guard let videoURL = Bundle.main.path(forResource: "clouds", ofType: "mp4") else { return }
+        let url = URL(fileURLWithPath: videoURL)
+        do {
+            let item = AVPlayerItem(url: url)
+            let player = AVQueuePlayer(items: [item])
+            looper = AVPlayerLooper(player: player, templateItem: item)
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = view.bounds
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            view.layer.addSublayer(playerLayer)
+            player.play()
+        }
     }
 }

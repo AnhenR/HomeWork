@@ -32,7 +32,6 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць! Некалькі выдатных мясцін Беларусі, якія варта наведаць!"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -54,6 +53,7 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
         button.setTitle("Карта", for: .normal)
         button.backgroundColor = .brown
         button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(didTapMap), for: .touchUpInside)
         return button
     }()
     
@@ -78,7 +78,7 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     private func setupCollection() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: view.frame.width, height: 450)
+        layout.itemSize = CGSize(width: view.frame.width, height: 500)
         layout.scrollDirection = .horizontal
         placesCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         placesCollection.backgroundColor = .clear
@@ -101,7 +101,7 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
         ])
-        
+        descriptionLabel.text = viewModel.review.descriptionPlace
         scrollView.addSubview(descriptionLabel)
         scrollView.addShadowOnSubviews()
         NSLayoutConstraint.activate([
@@ -140,6 +140,10 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     
     @objc private func didTapWeather() {
         navigationController?.pushViewController(WeatherViewController(), animated: true)
+    }
+    
+    @objc private func didTapMap() {
+        navigationController?.pushViewController(MapViewController(viewModel: .init(map: .init(latitude: viewModel.review.latitude, longitude: viewModel.review.longitude))), animated: true)
     }
 }
 

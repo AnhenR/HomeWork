@@ -12,6 +12,7 @@ class CustomCell: UICollectionViewCell {
     let placesImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

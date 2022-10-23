@@ -85,7 +85,8 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ReviewViewController(viewModel: .init(review: .init(imagePlace: [], descriptionPlace: ""))), animated: true)
+        
+        navigationController?.pushViewController(ReviewViewController(viewModel: .init(review: .init(imagePlace:Database.shared.reviewArray[indexPath.row].imagePlace, descriptionPlace: Database.shared.reviewArray[indexPath.row].descriptionPlace, latitude: Database.shared.reviewArray[indexPath.row].latitude, longitude: Database.shared.reviewArray[indexPath.row].longitude))), animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

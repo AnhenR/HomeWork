@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
-//тут будут массивы текстов и картинки
 struct Review {
     var imagePlace: [UIImage]
     var descriptionPlace: String
+    var latitude: Double
+    var longitude: Double
 }
 
 class ReviewViewModel {
