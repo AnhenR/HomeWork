@@ -69,23 +69,38 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         configureUI()
         setupScroll()
+        placesCollection = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        placesCollection.setCollectionViewLayout(generateLayout(), animated: true)
         setupCollection()
         placesCollection.delegate = self
         placesCollection.dataSource = self
         placesCollection.register(CustomCell.self, forCellWithReuseIdentifier: "Cell")
     }
     
+    private func generateLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { (section, layoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+//                .absolute(250)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            
+            group.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .groupPagingCentered
+            return section
+        }
+    }
+    
     private func setupCollection() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: view.frame.width, height: 500)
-        layout.scrollDirection = .horizontal
-        placesCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         placesCollection.backgroundColor = .clear
-        placesCollection.isPagingEnabled = true
         mainImage.addSubview(placesCollection)
         placesCollection.translatesAutoresizingMaskIntoConstraints = false
-        placesCollection.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        placesCollection.heightAnchor.constraint(equalToConstant: 330).isActive = true
         placesCollection.leadingAnchor.constraint(equalTo: mainImage.leadingAnchor).isActive = true
         placesCollection.trailingAnchor.constraint(equalTo: mainImage.trailingAnchor).isActive = true
         placesCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
@@ -139,7 +154,7 @@ class ReviewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func didTapWeather() {
-        navigationController?.pushViewController(WeatherViewController(), animated: true)
+        navigationController?.pushViewController(WeatherViewController(viewModel: .init(data: .init(latitude: viewModel.review.latitude, longitude: viewModel.review.longitude))), animated: true)
     }
     
     @objc private func didTapMap() {

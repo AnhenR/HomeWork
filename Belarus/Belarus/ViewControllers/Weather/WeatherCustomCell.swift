@@ -1,18 +1,18 @@
 //
-//  CustomCell.swift
+//  WeatherCustomCell.swift
 //  Belarus
 //
-//  Created by user on 18.10.22.
+//  Created by user on 24.10.22.
 //
 
 import Foundation
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+class WeatherCustomCell: UICollectionViewCell {
     let placesImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

@@ -8,17 +8,28 @@
 import Foundation
 import UIKit
 
+struct WeatherData {
+    var latitude: Double
+    var longitude: Double
+}
+
 typealias VoidHandler = () -> Void
 
-class WeatherViewModel: UIViewController {
+class WeatherViewModel {
     
+    let data: WeatherData
+    
+    init(data: WeatherData){
+        self.data = data
+    }
+
     var bindWeather: Bindable<Hourly> = Bindable()
     let activityIndicatorVisability: Bindable<Bool> = Bindable()
     
-    func loadWeather(for latitude: Double, and longitude: Double) async {
+    func loadWeather() async {
         activityIndicatorVisability.update(with: false)
         do {
-            let weather: Weather = try await NetworkActor.request(router: WeatherRouter.getWeather(latitude: latitude, longitude: longitude))
+            let weather: Weather = try await NetworkActor.request(router: WeatherRouter.getWeather(latitude: data.latitude, longitude: data.longitude))
             if let hourly = weather.hourly {
                 bindWeather.update(with: hourly)
             }

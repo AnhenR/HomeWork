@@ -11,6 +11,17 @@ import AVFoundation
 
 class WeatherViewController: UIViewController {
     
+    let viewModel: WeatherViewModel
+    
+    init(viewModel:WeatherViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private var looper: AVPlayerLooper?
     
     override func viewDidLoad() {
