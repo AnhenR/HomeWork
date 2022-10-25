@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     private let mainLabel: UILabel = {
         let label = UILabel()
-        label.text = "Некалькі выдатных мясцін Беларусі, якія варта наведаць!"
+        label.text = "Некалькі выдатных мясцін Беларусі,якія варта наведаць!"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center

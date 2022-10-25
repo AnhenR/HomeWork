@@ -23,10 +23,21 @@ class WeatherViewController: UIViewController {
     }
     
     private var looper: AVPlayerLooper?
+
+    private var weatherCollection : UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundVideo()
+        weatherCollection = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        weatherCollection.setCollectionViewLayout(generateLayout(), animated: true)
+        setupCollection()
+        weatherCollection.delegate = self
+        weatherCollection.dataSource = self
+        weatherCollection.register(WeatherCustomCell.self, forCellWithReuseIdentifier: "WeatherCell")
+        Task(priority: .userInitiated) {
+            await viewModel.loadWeather()
+        }
     }
     
     private func backgroundVideo() {
@@ -42,5 +53,88 @@ class WeatherViewController: UIViewController {
             view.layer.addSublayer(playerLayer)
             player.play()
         }
+    }
+    
+    private func generateLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { (section, layoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            
+            group.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 0)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .groupPagingCentered
+            return section
+        }
+    }
+    
+    private func setupCollection() {
+        weatherCollection.backgroundColor = .clear
+        view.addSubview(weatherCollection)
+        view.bringSubviewToFront(weatherCollection)
+        weatherCollection.translatesAutoresizingMaskIntoConstraints = false
+        weatherCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        weatherCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30).isActive = true
+        weatherCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        weatherCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40).isActive = true
+    }
+}
+
+extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath as IndexPath) as! WeatherCustomCell
+        
+        viewModel.bindWeather.bind(\.time[indexPath.row], to: cell.time, \.text) { value in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+            let dataDate = dateFormatter.date(from: value)
+            dateFormatter.dateFormat = "HH:mm"
+            let newStringDate = dateFormatter.string(from: dataDate!)
+            return "Час: \(newStringDate)"
+        }
+        viewModel.bindWeather.bind(\.temperature2m[indexPath.row], to: cell.temp, \.text) { value in
+            return "Тэмпература: \(value)°C"
+        }
+        viewModel.bindWeather.bind(\.apparentTemperature[indexPath.row], to: cell.appTemp, \.text) { value in
+            return "Уяўная тэмпература: \(value)°C"
+        }
+        viewModel.bindWeather.bind(\.rain[indexPath.row], to: cell.rain, \.text) { value in
+            if value > 0 {
+                return "Дождж: \(value)мм"
+            } else {
+                return "Без дажджоў"
+            }
+        }
+        viewModel.bindWeather.bind(\.snowfall[indexPath.row], to: cell.snow, \.text) { value in
+            if value > 0 {
+                return "Снег: \(value)мм"
+            } else {
+                return "Без снегу"
+            }
+        }
+        viewModel.bindWeather.bind(\.cloudcover[indexPath.row], to: cell.cloud, \.text) { value in
+            if value < 10 {
+                return "Ясна"
+            } else if value > 11 && value < 50 {
+                return "Пераменная воблачнасць: \(value)%"
+            } else {
+                return "Воблачна: \(value)%"
+            }
+        }
+        viewModel.bindWeather.bind(\.windspeed10m[indexPath.row], to: cell.wind, \.text) { value in
+            return "Вецер: \(value)км/г"
+        }
+        cell.addShadow()
+        return cell
     }
 }
